@@ -6,7 +6,7 @@
 /*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2024/12/28 21:53:23 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/03 09:05:58 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,22 @@ int	has_duplicate(int *array, int size)
 	
 	i = 0;
 	j = 1;
+	ft_printf("size is: %i\n", size);
 	while (i < size)
 	{
+		ft_printf("while (%i < size)\n", i);
+		ft_printf("j is = %i\n", j);
 		while (j < size)
 		{
+			ft_printf("while (%i < size)\n", j);
+			ft_printf("if (array[%i] == array[%j])\n", i, j);
 			if (array[i] == array[j])
-				return 1;
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 /**
@@ -44,6 +49,7 @@ int	has_duplicate(int *array, int size)
  *         Display list of instructions to sort `stack a` in ascending order
  *
 */
+// TODO: Resolve bug with loop issues which checking for duplicates
 int	main(int argc, char *argv[])
 {
 	int			i;
@@ -66,13 +72,16 @@ int	main(int argc, char *argv[])
 			print_error_msg();
 		if (num < INT_MIN || num > INT_MAX)
 			print_error_msg();
+		ft_printf("%i\n", i);
 		duplicate_check_array[i-1] = (int)num;
+		ft_printf("check_array[] = %i\n", duplicate_check_array[i-1]);
+		if (i > 1 && has_duplicate(duplicate_check_array, i - 1)){
+			ft_printf("Duplicates found!\n");
+			return (0);
+		}
 		new_node = ft_lstnew((int)num);
 		ft_lstadd_front(&head, new_node);
 		i++;
-	}
-	for (int i = 0; i < argc; i++){
-		ft_printf("%i\n", duplicate_check_array[i]);
 	}
 	if (has_duplicate(duplicate_check_array, argc - 1) == 1)
 	{
