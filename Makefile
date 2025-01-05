@@ -6,7 +6,7 @@
 #    By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 20:03:42 by hshi-yun          #+#    #+#              #
-#    Updated: 2024/12/28 17:00:41 by shiyun           ###   ########.fr        #
+#    Updated: 2025/01/05 17:11:04 by shiyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ LIBFT = ./libft
 PROGRAM = push_swap
 CLIENT = client
 
-SRC = push_swap.c
+SRC = push_swap.c sort_stack.c \
+
 OBJ = $(SRC:.c=.o)
 
 all: $(PROGRAM)

@@ -6,11 +6,12 @@
 /*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/05 16:48:00 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/05 17:01:28 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./libft/libft.h"
+# include "push_swap.h"
 # include <limits.h>
 
 int		handle_error(int *array, t_list **node)
@@ -87,7 +88,8 @@ int	main(int argc, char *argv[])
 	if (!create_linked_list(argc, argv, &duplicate_check_array, &head))
 		return handle_error(duplicate_check_array, &head);
 	free(duplicate_check_array);
-	//TODO: Sort the stack
+	//TODO: Sort the stack with the nodes given
+	sort_stack(&head);
 	ft_lstclear(&head, del_int);
 	return (1);
 }
