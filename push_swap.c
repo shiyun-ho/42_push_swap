@@ -6,42 +6,40 @@
 /*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/03 09:05:58 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/05 15:14:06 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./libft/libft.h"
 # include <limits.h>
 
-int	print_error_msg()
+void	del_int(int content)
+{
+	(void)content;
+}
+
+int		handle_error(int *array, t_list **node)
 {
 	ft_printf("Error\n");
+	if (array)
+		free(array);
+	if (node)
+		ft_lstclear(node, del_int);
 	return (0);
 }
 
 int	has_duplicate(int *array, int size)
 {
 	int	i;
-	int j;
-	
+		
 	i = 0;
-	j = 1;
-	ft_printf("size is: %i\n", size);
-	while (i < size)
+	while(i < (size - 1))
 	{
-		ft_printf("while (%i < size)\n", i);
-		ft_printf("j is = %i\n", j);
-		while (j < size)
-		{
-			ft_printf("while (%i < size)\n", j);
-			ft_printf("if (array[%i] == array[%j])\n", i, j);
-			if (array[i] == array[j])
-				return (0);
-			j++;
-		}
+		if (array[i] == array[i+1])
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 /**
@@ -49,7 +47,6 @@ int	has_duplicate(int *array, int size)
  *         Display list of instructions to sort `stack a` in ascending order
  *
 */
-// TODO: Resolve bug with loop issues which checking for duplicates
 int	main(int argc, char *argv[])
 {
 	int			i;
@@ -68,25 +65,18 @@ int	main(int argc, char *argv[])
 	while (i < argc)
 	{
 		num = ft_atol(argv[i]);	
-		if (num == 0 && (argv[i][0] != '0' || argv[i][1] != '\0'))
-			print_error_msg();
-		if (num < INT_MIN || num > INT_MAX)
-			print_error_msg();
-		ft_printf("%i\n", i);
 		duplicate_check_array[i-1] = (int)num;
-		ft_printf("check_array[] = %i\n", duplicate_check_array[i-1]);
-		if (i > 1 && has_duplicate(duplicate_check_array, i - 1)){
-			ft_printf("Duplicates found!\n");
-			return (0);
-		}
 		new_node = ft_lstnew((int)num);
+		if (!new_node)
+			return (handle_error(duplicate_check_array, &head));
 		ft_lstadd_front(&head, new_node);
+		if ((num == 0 && (argv[i][0] != '0' || argv[i][1] != '\0')) ||
+            (num < INT_MIN || num > INT_MAX) ||
+            (has_duplicate(duplicate_check_array, i)))
+            return handle_error(duplicate_check_array, &head);
 		i++;
 	}
-	if (has_duplicate(duplicate_check_array, argc - 1) == 1)
-	{
-		print_error_msg();
-	}
 	free(duplicate_check_array);
+	ft_lstclear(&head, del_int);
 	return (1);
 }
