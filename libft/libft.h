@@ -6,7 +6,7 @@
 /*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:17:03 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/01/05 16:45:30 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/08 20:57:38 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_list  *ft_lstnew(int content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void    del_int(int content);
 void    ft_lstclear(t_list **lst, void (*del)(int));
+int     ft_lstsize(t_list *lst);
 
 int		ft_printf(const char *input, ...);
 int		ft_printchar(char c);
