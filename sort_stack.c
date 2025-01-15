@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/15 21:25:50 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/15 22:00:55 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,17 @@ void	sort_small_input(t_list **stack_a, int size)
 		c = (*stack_a)->next->next->content;
 		if (a < b && b < c)	// a, b, c
 			return ;
-		if (a > b)
+		else if (a > b && a < c)
+			sa(stack_a);
+		else if (a < b && a > c)
 		{
-			if (a < c)
-				sa(stack_a);
-			else if (a > c)
+			if (b > c)
 			{
-				if (b > c)
-				{
-					sa(stack_a);
-					rra(stack_a); //c, b, a
-				}
-				else if (b < c)
-					ra(stack_a); //b, c, a
+				sa(stack_a);
+				rra(stack_a); //c, b, a
 			}
+			else if (b < c)
+				ra(stack_a); //b, c, a
 		}
 		else if (a < b && b > c)
 		{
@@ -60,90 +57,6 @@ void	sort_small_input(t_list **stack_a, int size)
 		}
 	}
 }
-
-// void	sort_small_input(t_list **stack_a, int size)
-// {
-// 	if (size == 1)
-// 		return (0);
-// 	else if (size == 2)
-// 	{
-// 		if ((*stack_a)->content > (*stack_a)->next->content)
-// 			sa(stack_a);	//swap first two elements in stack_a
-// 	}
-// 	else
-// 	{
-// 		int	a; //first number
-// 		int	b;
-// 		int	c; //third number
-		
-// 		a = (*stack_a)->content;
-// 		b = (*stack_a)->next->content;
-// 		c = (*stack_a)->next->next->content;
-
-// /**
-//  * Scenarios (ascending)
-//  * a, b, c (V)
-//  * a, c, b (V)
-//  * b, c, a (V)
-//  * b, a, c (V)
-//  * c, a, b (V)
-//  * c, b, a (V)
-//  */
-// 		if (a < b && b < c)	// a, b, c
-// 			return ;
-// 		if (a > b && a < c)
-// 		{
-// 			/**
-// 			 * a  b
-// 			 * b  a
-// 			 * c  c
-// 			 */
-// 			sa(stack_a);
-// 		}
-// 		if (a > b && a > c)
-// 		{
-// 			/**
-// 			 * a  b  c
-// 			 * b  a	 b		 		   	
-// 			 * c  c	 a		 
-// 			*/
-// 			if (b > c)
-// 			{
-// 				sa(stack_a);
-// 				rra(stack_a); // c, b, a
-// 			}
-// 			/**
-// 			 * a b
-// 			 * b c
-// 			 * c a
-// 			 */
-// 			if (b < c) // b, c, a
-// 				ra(stack_a); 
-// 		}
-// 		else if (a < b && b > c)
-// 		{
-// 			if (a > c) //c, a, b
-// 			{
-// 				/**
-// 				 * a
-// 				 * b
-// 				 * c
-// 				 */
-// 				rra(stack_a);
-// 			}
-// 			else if (a < c) //a, c, b
-// 			{
-// 				/**
-// 				 * a c a
-// 				 * b a c
-// 				 * c b b
-// 				 */
-// 				rra(stack_a);				
-// 				sa(stack_a);
-// 			}
-// 		}
-// 	}
-// }
 
 /**
  * @brief: Sorts stack from user input
