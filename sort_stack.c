@@ -3,26 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/09 09:00:31 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/15 21:17:18 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-/**
-	 * @param:
-	 * 2
-	 * 3
-	 * 1
-	 * @returns:
-	 * 1
-	 * 2
-	 * 3
-	 */
 /**
  * @brief: Sorts when stack size <= 3
  * @param: stack
@@ -38,9 +28,9 @@ void	sort_small_input(t_list **stack_a, int size)
 	}
 	else
 	{
-		int	a;
+		int	a; //first number
 		int	b;
-		int	c;
+		int	c; //third number
 		
 		a = (*stack_a)->content;
 		b = (*stack_a)->next->content;
@@ -49,23 +39,69 @@ void	sort_small_input(t_list **stack_a, int size)
 /**
  * Scenarios (ascending)
  * a, b, c (V)
- * a, c, b 
+ * a, c, b (V)
  * b, c, a (V)
- * b, a, c
- * c, a, b 
+ * b, a, c (V)
+ * c, a, b (V)
  * c, b, a (V)
  */
+/*
+c => 
+a
+b
+*/
 		if (a < b && b < c)	// a, b, c
-			return ; 
+			return ;
+		if (a > b && a < c)
+		{
+			/**
+			 * a  b
+			 * b  a
+			 * c  c
+			 */
+			sa(stack_a);
+		}
 		if (a > b && a > c)
 		{
-			ra(stack_a); // c, b, a
+			/**
+			 * a  b  c
+			 * b  a	 b		 		   	
+			 * c  c	 a		 
+			*/
+			if (b > c)
+			{
+				sa(stack_a);
+				rra(stack_a); // c, b, a
+			}
+			/**
+			 * a b
+			 * b c
+			 * c a
+			 */
 			if (b < c) // b, c, a
 				ra(stack_a); 
 		}
-		else if ()
+		else if (a < b && b > c)
 		{
-			
+			if (a > c) //c, a, b
+			{
+				/**
+				 * a
+				 * b
+				 * c
+				 */
+				rra(stack_a);
+			}
+			else if (a < c) //a, c, b
+			{
+				/**
+				 * a c a
+				 * b a c
+				 * c b b
+				 */
+				rra(stack_a);				
+				sa(stack_a);
+			}
 		}
 	}
 }
