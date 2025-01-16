@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/16 20:58:31 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:10:34 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 	{
 		ra(stack_a); // b, c, a
 		if (b > c)
+		{
 			sa(stack_a); // c, b, a
+		}
 	}
 	else if (a < b && b > c)
 	{
@@ -61,7 +63,8 @@ void	sort_three_elements(t_list **stack_a, int size)
 		a = (*stack_a)->content;
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->next->next->content;
-		sort_three_numbers(stack_a, a, b, c);
+		// sort_three_numbers(stack_a, a, b, c);
+		sort_three_numbers(stack_a, c, b, a);
 	}
 }
 
