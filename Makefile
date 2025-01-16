@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+         #
+#    By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 20:03:42 by hshi-yun          #+#    #+#              #
-#    Updated: 2025/01/05 17:11:04 by shiyun           ###   ########.fr        #
+#    Updated: 2025/01/16 20:39:47 by hshi-yun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ LIBFT = ./libft
 PROGRAM = push_swap
 CLIENT = client
 
-SRC = push_swap.c sort_stack.c \
+SRC = push_swap.c sort_stack.c swap_operations.c rotate_operations.c \
+	  reverse_rotate_operations.c \
 
 OBJ = $(SRC:.c=.o)
 
