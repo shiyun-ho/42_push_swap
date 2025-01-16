@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/16 21:10:34 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:40:03 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,20 @@
  * @params: c - third input [first in argument]
  */
 // TODO: Direction is opposite, need to figure out the opposite of it
+/**
+ * 1 2 3	a b c
+ * 2 3 1	b c a
+ * 3 1 2	c a b
+ * 2 1 3	b a c
+ * 3 2 1	c b a
+ * 1 3 2	a c b
+ */
 void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 {
+	// CHECKED V 1 2 3
 	if (a < b && b < c)	// a, b, c
 		return ;
-	else if (a > b && a < c)
-		sa(stack_a); // b, a, c
-	else if (a < b && a > c)
-	{
-		ra(stack_a); // b, c, a
-		if (b > c)
-		{
-			sa(stack_a); // c, b, a
-		}
-	}
-	else if (a < b && b > c)
-	{
-		rra(stack_a); // c, a, b
-		if (a < c) // a, c, b
-			sa(stack_a);
-	}
+	// TODO: Rethink the algorithm for three elements
 }
 /**
  * @brief: Sorts when stack size <= 3
