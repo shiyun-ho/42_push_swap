@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/17 21:07:13 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:09:39 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,36 +50,7 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 			sa(stack_a);
 	}
 }
-// void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
-// {
-// 	if (a < b && a < c)
-// 	{
-// 		if (b < c)
-// 			return ;
-// 		if (b > c)
-// 			sa(stack_a);
-// 	}
-// 	if (b < a && b < c)
-// 	{
-// 		if (a < c)
-// 		{
-// 			rra(stack_a);  
-// 			sa(stack_a);
-// 		}
-// 		if (a > c)
-// 			rra(stack_a);
-// 	}
-// 	if (c < a && c < b)
-// 	{
-// 		if (a < b)
-// 			ra(stack_a);
-// 		if (a > b)
-// 		{
-// 			ra(stack_a);
-// 			sa(stack_a);
-// 		}
-// 	}
-// }
+
 /**
  * @brief: Sorts when stack size <= 3
  * @param: stack
