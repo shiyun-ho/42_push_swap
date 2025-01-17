@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/08 20:44:26 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/17 20:52:01 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 	*array = malloc((argc - 1) * sizeof(int));
 	if (!*array)
 		return (0);
-	
+
 	i = 1;
 	*head = NULL;
 	while (i < argc)
 	{
 		num = ft_atol(argv[i]);
-		if (num < INT_MIN || num> INT_MAX)
-			return (0);
 		(*array)[i - 1] = (int)num;
+		if (num < INT_MIN || num > INT_MAX)
+			return handle_error(*array, head);
 		new_node = ft_lstnew((int)num);
 		if (!new_node)
 			return (0);

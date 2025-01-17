@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/16 21:40:03 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:04:07 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,42 @@
  */
 // TODO: Direction is opposite, need to figure out the opposite of it
 /**
- * 1 2 3	a b c
- * 2 3 1	b c a
- * 3 1 2	c a b
- * 2 1 3	b a c
- * 3 2 1	c b a
- * 1 3 2	a c b
+ * 1 2 3	a b c (V)
+ * 2 3 1	b c a (V)
+ * 3 1 2	c a b (V)
+ * 2 1 3	b a c (V)
+ * 3 2 1	c b a (V)
+ * 1 3 2	a c b (V)
  */
 void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 {
-	// CHECKED V 1 2 3
-	if (a < b && b < c)	// a, b, c
-		return ;
-	// TODO: Rethink the algorithm for three elements
+	if (a < b && a < c)
+	{
+		if (b < c)
+			return ;
+		if (b > c)
+			sa(stack_a);
+	}
+	if (b < a && b < c)
+	{
+		if (a < c)
+		{
+			rra(stack_a);  
+			sa(stack_a);
+		}
+		if (a > c)
+			rra(stack_a);
+	}
+	if (c < a && c < b)
+	{
+		if (a < b)
+			ra(stack_a);
+		if (a > b)
+		{
+			ra(stack_a);
+			sa(stack_a);
+		}
+	}
 }
 /**
  * @brief: Sorts when stack size <= 3
@@ -57,6 +80,7 @@ void	sort_three_elements(t_list **stack_a, int size)
 		a = (*stack_a)->content;
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->next->next->content;
+		ft_printf("Before sorting:\na: %i\nb: %i\nc: %i\n", a, b, c);
 		// sort_three_numbers(stack_a, a, b, c);
 		sort_three_numbers(stack_a, c, b, a);
 	}
@@ -76,15 +100,6 @@ void    sort_stack(t_list **stack_a)
     size = ft_lstsize(*stack_a);
     ft_printf("size = %i\n", size);
     // stack_b = NULL;
-	
-	// TODO: Remove later - checker function
-	ft_printf("Before sorting:\n");
-	while (current)
-    {
-        ft_printf("%i\n", current->content);
-        current = current->next;
-    }
-	ft_printf("\n\n");
 	
 	//TODO: Implement sorting algorithm for 5 inputs, 100 inputs, more than 100
 	if (size <= 3)
