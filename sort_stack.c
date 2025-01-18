@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/17 21:28:05 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:29:18 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 			sa(stack_a);
 	}
 }
+
+// void	sort_five_elements(t_list **stack_a)
+// {
+// 	/**
+// 	 * Algorithm: 
+// 	 * 1) Identify two largest elements
+// 	 * 2) Bubble them up to the top of stack_a
+// 	 * 3) Push the biggest to stack_b, then second biggest to stack_b
+// 	 * 4) Use sort_three_numbers
+// 	 * 5) Push second biggest to stack_a, then biggest to stack_a
+// 	 */
+	
+// }
 
 /**
  * @brief: Sorts when stack size <= 3
@@ -98,8 +111,8 @@ void    sort_stack(t_list **stack_a)
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
 	//TODO: 3, 5(12 moves), 100, 500
-	else if (size <= 5)
-		sort_five_elements(stack_a, size);
+	// else if (size <= 5)
+	// 	sort_five_elements(stack_a, size);
 	// else if (size <= 100)
 	// 	sort_hundred_elements(stack_a);
 	// else

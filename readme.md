@@ -1,15 +1,18 @@
 # Push Swap - Technical Requirements
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Project Objectives](#project-objectives)
-- [Technical Requirements](#technical-requirements)
-- [Evaluation Criteria](#evaluation-criteria)
-- [Personal Thought Process](#personal-thought-process)
-  - [Understanding the Problem](#understanding-the-problem)
-  - [Algorithm Design](#algorithm-design)
-  - [Implementation Details](#implementation-details)
-  - [Testing Strategy](#testing-strategy)
+- [Push Swap - Technical Requirements](#push-swap---technical-requirements)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Project Objectives](#project-objectives)
+  - [Technical Requirements](#technical-requirements)
+  - [Evaluation Criteria](#evaluation-criteria)
+  - [Personal Thought Process](#personal-thought-process)
+    - [Understanding the Problem](#understanding-the-problem)
+    - [Algorithm Design](#algorithm-design)
+    - [Implementation Details](#implementation-details)
+    - [Testing Strategy](#testing-strategy)
+    - [Issues](#issues)
 
 ---
 
@@ -100,4 +103,13 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   - Write unit tests for individual operations.
   - Stress test with large data sets to ensure efficiency.
 
+### Issues
+- **Parsing**
+  -  ./push_swap 123a
+  -  ./push_swap #1
+  -  ./push_swap #2
+  -  ./push_swap #2 3 4
+  -  ./push_swap +1+
+  -  ./push_swap "3 2 1"
+  -  Fix atol: Check if_digit throughout the whole char[]
 ---
