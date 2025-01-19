@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/18 20:29:18 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/19 12:27:03 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	sort_three_elements(t_list **stack_a, int size)
 		a = (*stack_a)->next->next->content; // Last node: First number added
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->content; // Last number added
-		ft_printf("Before sorting:\na: %i\nb: %i\nc: %i\n", a, b, c);
+		ft_printf("Before sorting (FILO):\n%i\n%i\n%i\n", c, b, a);
 		// sort_three_numbers(stack_a, c, b, a);
 		sort_three_numbers(stack_a, a, b, c);
 	}
@@ -121,7 +121,7 @@ void    sort_stack(t_list **stack_a)
 	
 	// TODO: Remove later - checker function
 	current = *stack_a;
-	ft_printf("\n\nAfter sorting:\n");
+	ft_printf("\n\nAfter sorting (FILO):\n");
     while (current)
     {
         ft_printf("%i\n", current->content);
