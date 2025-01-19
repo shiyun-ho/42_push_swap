@@ -110,7 +110,7 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   -  ./push_swap #2
   -  ./push_swap #2 3 4
   -  ./push_swap +1+
-  -  ./push_swap "3 2 1"
+  -  ./push_swap "3 2 1" [To resolve later]
   -  Fix atol: Check if_digit throughout the whole char[]
   -  Double free() detected for some inputs which violate conditions
 
@@ -121,4 +121,6 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
       - handle_error() not exiting directly
       - handle_error() not called for other functions which check for invalid input
   - Bug: Non digit characters are not parsed accurately. Rather than exiting the function entirely, non digit characters are not handled properly
+    - Just realised that special characters such as `#` and `$` are characters unique to bash and used for interpretation. 
+    - Modifications worked with `@` and `%` as they are non unique characters to shell. 
 ---

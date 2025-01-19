@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/19 12:47:23 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:46:28 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,43 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		return (0);
-	// TODO: Implement feature which checks if character is found in char[]
-		// Loop through char array
-		// Check if isdigit(arr[1][i] 
+	int i = 1;
+	int j = 0;
+	while (argv[i])
+	{
+		while (argv[i][j])
+		{
+			ft_printf("Checking current character: %c\n", argv[i][j]);
+			if (!ft_isdigit(argv[i][j]))
+			{
+				if (argv[i][j] == '-' || argv[i][j] == '+')
+				{
+					if (j != 0)
+					{
+						ft_printf("Error\n");
+						ft_printf("Contains operator: %c\n", argv[i][j]);
+						exit(EXIT_FAILURE);
+					}
+				}
+				else
+				{
+					ft_printf("Error\n");
+					ft_printf("Not a digit: %c\n", argv[i][j]);
+					exit(EXIT_FAILURE);
+				}
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 	if (!create_linked_list(argc, argv, &duplicate_check_array, &head))
 	{
 		handle_error(duplicate_check_array, &head);
 		ft_printf("Exiting function...\n");
 		exit(EXIT_FAILURE);
 	}
+	ft_printf("\n");
 	ft_printf("Starting sorting of stack...\n");
 	//TODO: Sort the stack with the nodes given
 	sort_stack(&head);
