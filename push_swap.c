@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/19 17:46:28 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/19 18:08:06 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 	}
 	return (1);
 }
+
 /**
  * @brief: Takes an argument `stack a`, formatted as list of integers,
  *         Display list of instructions to sort `stack a` in ascending order
