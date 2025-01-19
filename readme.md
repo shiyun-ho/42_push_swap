@@ -112,4 +112,13 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   -  ./push_swap +1+
   -  ./push_swap "3 2 1"
   -  Fix atol: Check if_digit throughout the whole char[]
+  -  Double free() detected for some inputs which violate conditions
+
+- **Thought Process**
+  - Bug: Double free() detected in instances where values are duplicated/ values exceed definition of int
+    - After reviewing the code in `push_swap.c`, it seems like the double free comes from two sources:
+      - Additional free(duplicate_check_array())
+      - handle_error() not exiting directly
+      - handle_error() not called for other functions which check for invalid input
+  - Bug: Non digit characters are not parsed accurately. Rather than exiting the function entirely, non digit characters are not handled properly
 ---
