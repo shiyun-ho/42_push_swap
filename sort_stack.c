@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/19 12:27:03 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/20 21:59:40 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,6 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 	}
 }
 
-// void	sort_five_elements(t_list **stack_a)
-// {
-// 	/**
-// 	 * Algorithm: 
-// 	 * 1) Identify two largest elements
-// 	 * 2) Bubble them up to the top of stack_a
-// 	 * 3) Push the biggest to stack_b, then second biggest to stack_b
-// 	 * 4) Use sort_three_numbers
-// 	 * 5) Push second biggest to stack_a, then biggest to stack_a
-// 	 */
-	
-// }
-
 /**
  * @brief: Sorts when stack size <= 3
  * @param: stack
@@ -91,7 +78,45 @@ void	sort_three_elements(t_list **stack_a, int size)
 		sort_three_numbers(stack_a, a, b, c);
 	}
 }
+void	find_two_largest_no(int a, int b, int c, int d, int e, int largest, int second_largest)
+{
+	int	i;
+	int *nums;
+	
+	i = 0;
+	nums = (int*)malloc(5 * sizeof(int));
+	nums[0] = a;
+	nums[1] = b;
+	nums[2] = c;
+	nums[3] = d;
+	
+}
+/*
+ *
+ * @brief: Sorts when stack size <=5
+ * @param: pointer to pointer of first node on top of stack
+ */
+void	sort_five_elements(t_list **stack_a, int size)
+{
+	int		temporary_node;
 
+	while ((*stack_a)->next != NULL)
+	{
+		
+	}
+	(*stack_a)->next->next->next->next->content; // Last node: First number added
+	(*stack_a)->next->next->next->content;
+	(*stack_a)->next->next->content;
+	(*stack_a)->next->content;
+	(*stack_a)->content; // First node: Last number added
+	
+	// TODO: Find second largest and largest element
+	find_largest_two_no(a, b, c, d, e, largest, second_largest);
+	// TODO: Bubble up to top of stack_a
+	// TODO: Push largest, then second largest to stack_b
+	// TODO: Sort remaining using sort_three_elements
+	// TODO: Push second largest, then largest element to stack_a
+}
 /**
  * @brief: Sorts stack from user input
  * @param: ``stack_a`` - Stack generated from user inputs
@@ -111,8 +136,8 @@ void    sort_stack(t_list **stack_a)
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
 	//TODO: 3, 5(12 moves), 100, 500
-	// else if (size <= 5)
-	// 	sort_five_elements(stack_a, size);
+	else if (size <= 5)
+		sort_five_elements(stack_a, size);
 	// else if (size <= 100)
 	// 	sort_hundred_elements(stack_a);
 	// else
