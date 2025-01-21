@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/20 21:59:40 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:39:09 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ void	sort_three_elements(t_list **stack_a, int size)
 		sort_three_numbers(stack_a, a, b, c);
 	}
 }
-void	find_two_largest_no(int a, int b, int c, int d, int e, int largest, int second_largest)
+void	find_two_largest_no(int a, int b, int c, int d, int e)
 {
 	int	i;
 	int *nums;
+	int	largest;
 	
 	i = 0;
 	nums = (int*)malloc(5 * sizeof(int));
@@ -89,6 +90,10 @@ void	find_two_largest_no(int a, int b, int c, int d, int e, int largest, int sec
 	nums[1] = b;
 	nums[2] = c;
 	nums[3] = d;
+	nums[4] = e;
+	largest = a;
+
+	// Insertion sort
 	
 }
 /*
@@ -100,18 +105,23 @@ void	sort_five_elements(t_list **stack_a, int size)
 {
 	int		temporary_node;
 
-	while ((*stack_a)->next != NULL)
-	{
-		
-	}
 	(*stack_a)->next->next->next->next->content; // Last node: First number added
 	(*stack_a)->next->next->next->content;
 	(*stack_a)->next->next->content;
 	(*stack_a)->next->content;
 	(*stack_a)->content; // First node: Last number added
 	
+	// Insertion sort algorithm
+	/**
+	 * 3 5 2 8 1
+	 * 3 5 2 8 1
+	 */
+	while ((*stack_a)->next != NULL)
+	{
+		
+	}
 	// TODO: Find second largest and largest element
-	find_largest_two_no(a, b, c, d, e, largest, second_largest);
+	// find_largest_two_no();
 	// TODO: Bubble up to top of stack_a
 	// TODO: Push largest, then second largest to stack_b
 	// TODO: Sort remaining using sort_three_elements
