@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/21 12:39:09 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/21 21:55:03 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,53 +78,63 @@ void	sort_three_elements(t_list **stack_a, int size)
 		sort_three_numbers(stack_a, a, b, c);
 	}
 }
-void	find_two_largest_no(int a, int b, int c, int d, int e)
-{
-	int	i;
-	int *nums;
-	int	largest;
-	
-	i = 0;
-	nums = (int*)malloc(5 * sizeof(int));
-	nums[0] = a;
-	nums[1] = b;
-	nums[2] = c;
-	nums[3] = d;
-	nums[4] = e;
-	largest = a;
 
-	// Insertion sort
-	
+/**
+ * ./push_swap 1 2 3 4 5
+ * 5 (*stack_a)
+ * 4 (*stack_a)->next->next
+ * 3 
+ * 2
+ * 1  
+ * 5 (*stack_a)					 	    last_node (last argument)
+ * 4 (*stack_a)->next
+ * 3 (*stack_a)->next->next
+ * 2 (*stack_a)->next->next->next
+ * 1 (*stack_a)->next->next->next->next = first_node (first argument)
+ */
+int		largest_no_position(t_list *first_node)
+{
+	t_list	*temp_node;
+	t_list	*largest_node;
+	int		position;
+
+	position = 0;
+	temp_node = first_node;
+	largest_node = first_node;
+	while (temp_node != NULL)
+	{
+		if (temp_node->content > largest_node->content)
+		{
+			position++;
+			largest_node = temp_node;
+		}
+		temp_node = temp_node->next;
+	}
+	return (position);
 }
+
 /*
- *
  * @brief: Sorts when stack size <=5
  * @param: pointer to pointer of first node on top of stack
  */
 void	sort_five_elements(t_list **stack_a, int size)
 {
-	int		temporary_node;
-
-	(*stack_a)->next->next->next->next->content; // Last node: First number added
-	(*stack_a)->next->next->next->content;
-	(*stack_a)->next->next->content;
-	(*stack_a)->next->content;
-	(*stack_a)->content; // First node: Last number added
-	
-	// Insertion sort algorithm
-	/**
-	 * 3 5 2 8 1
-	 * 3 5 2 8 1
-	 */
-	while ((*stack_a)->next != NULL)
-	{
+	int		largest_position;
+	int		second_largest_position;
 		
-	}
-	// TODO: Find second largest and largest element
-	// find_largest_two_no();
-	// TODO: Bubble up to top of stack_a
-	// TODO: Push largest, then second largest to stack_b
-	// TODO: Sort remaining using sort_three_elements
+	// Find position of largest_node in linked list
+	largest_position = largest_no_position(*stack_a);
+	// Shift largest position to top of stack
+	// Push to stack_b
+
+	// Find position of largest node of stack_a
+	second_largest_position = largest_no_position(*stack_a);
+	// Shift largest position to top of stack
+	// Push to stack_b
+	
+	// Sort remaining using sort_three_elements
+	sort_three_elements(*stack_a, 3);
+	
 	// TODO: Push second largest, then largest element to stack_a
 }
 /**
