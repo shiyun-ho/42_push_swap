@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/21 21:55:03 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/01/22 08:54:55 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  * @params: b - second input
  * @params: c - third input [first in argument]
  */
-// TODO: Direction is opposite, need to figure out the opposite of it
 /**
  * 1 2 3	a b c (V)
  * 2 3 1	b c a (V)
@@ -70,15 +69,18 @@ void	sort_three_elements(t_list **stack_a, int size)
 		int	b;
 		int	c;
 		
-		a = (*stack_a)->next->next->content; // Last node: First number added
+		a = (*stack_a)->next->next->content; // Last node: First number added is always last node
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->content; // Last number added
 		ft_printf("Before sorting (FILO):\n%i\n%i\n%i\n", c, b, a);
-		// sort_three_numbers(stack_a, c, b, a);
 		sort_three_numbers(stack_a, a, b, c);
 	}
 }
 
+/**
+ * @brief: Find position of largest node in linked list
+ * @returns: An integer on position
+ */
 /**
  * ./push_swap 1 2 3 4 5
  * 5 (*stack_a)
@@ -92,7 +94,7 @@ void	sort_three_elements(t_list **stack_a, int size)
  * 2 (*stack_a)->next->next->next
  * 1 (*stack_a)->next->next->next->next = first_node (first argument)
  */
-int		largest_no_position(t_list *first_node)
+int		find_position_of_largest(t_list *first_node)
 {
 	t_list	*temp_node;
 	t_list	*largest_node;
@@ -113,51 +115,77 @@ int		largest_no_position(t_list *first_node)
 	return (position);
 }
 
+/**
+ * @brief: Shifts largest element to top of stack and pushes it to another stack
+ * @param: stack_a
+ */
+void	shift_largest_to_top(t_list *stack_a, int largest_position, int size)
+{
+	if (largest_position == 1)
+		sa(stack_a);
+	else
+	{
+		if (largest_position == 2)
+		{
+			ra(stack_a);
+			ra(stack_a);
+		}
+		if (largest_position == 3 && size != 3)
+		{
+			ra(stack_a);
+			ra(stack_a);
+			ra(stack_a);
+		}
+		if (largest_position == size)
+			rra(stack_a);
+	}
+	pb(stack_a);
+}
+
 /*
  * @brief: Sorts when stack size <=5
  * @param: pointer to pointer of first node on top of stack
  */
-void	sort_five_elements(t_list **stack_a, int size)
+void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 {
 	int		largest_position;
 	int		second_largest_position;
 		
-	// Find position of largest_node in linked list
-	largest_position = largest_no_position(*stack_a);
-	// Shift largest position to top of stack
-	// Push to stack_b
+	largest_position = find_position_of_largest(*stack_a);
+	shift_largest_to_top(*stack_a, largest_position, size);
 
-	// Find position of largest node of stack_a
-	second_largest_position = largest_no_position(*stack_a);
-	// Shift largest position to top of stack
-	// Push to stack_b
+	second_largest_position = find_position_of_largest(*stack_a);
+	shift_largest_to_top(*stack_a, second_largest_position, size);
 	
-	// Sort remaining using sort_three_elements
 	sort_three_elements(*stack_a, 3);
-	
-	// TODO: Push second largest, then largest element to stack_a
+
+	while (*stack_b)
+	{
+		pa(*stack_b);	
+		(*stack_b)->next;
+	}
 }
 /**
  * @brief: Sorts stack from user input
- * @param: ``stack_a`` - Stack generated from user inputs
+ * @param: `stack_a` - Stack generated from user inputs
  */
 void    sort_stack(t_list **stack_a)
 {
     int     size;
     t_list  *current;
+	t_list	**stack_b;
 
     //Create a temporary copy of inputs as stack a
     current = *stack_a;
     size = ft_lstsize(*stack_a);
     ft_printf("size = %i\n", size);
-    // stack_b = NULL;
+    stack_b = NULL;
 	
-	//TODO: Implement sorting algorithm for 5 inputs, 100 inputs, more than 100
+	//TODO: Implement sorting algorithm formore than 100
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
-	//TODO: 3, 5(12 moves), 100, 500
 	else if (size <= 5)
-		sort_five_elements(stack_a, size);
+		sort_five_elements(stack_a, stack_b, size);
 	// else if (size <= 100)
 	// 	sort_hundred_elements(stack_a);
 	// else

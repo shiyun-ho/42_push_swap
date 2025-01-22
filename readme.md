@@ -123,4 +123,16 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   - Bug: Non digit characters are not parsed accurately. Rather than exiting the function entirely, non digit characters are not handled properly
     - Just realised that special characters such as `#` and `$` are characters unique to bash and used for interpretation. 
     - Modifications worked with `@` and `%` as they are non unique characters to shell. 
+  - Feature: Sort Five Elements
+    - After reflecting on the algorithm of sorting three elements - which was a twist on the sorting network - I attempted to:
+      - Decided that the baseline algorithm could be:
+        1. Find top two largest linked list nodes in linked list. 
+        2. Shift both of them to temporary stack, `stack_b`.
+        3. Sort the remaining elements using `sort_three_elements`. 
+        4. Push top two elements back to `stack_a`.  
+      - Utilise a sorting algorithm which introduces the use of `sort_three_elements` with pushing of top two largest nodes. 
+      - Problems faced:
+        1. At first, I've wanted to use BST to find top two largest nodes. 
+        2. Decided perhaps it was too complex for me to introduce it here. 
+        
 ---
