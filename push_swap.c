@@ -6,7 +6,7 @@
 /*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/20 09:07:27 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/22 22:57:15 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int	main(int argc, char *argv[])
 	ft_printf("Starting sorting of stack...\n");
 	//TODO: Sort the stack with the nodes given
 	sort_stack(&head);
+	// TODO: Clear both stack_a and stack_b before exiting
+	// Perhaps to be done in sort_stack???
 	ft_printf("Clearing linked list nodes ...\n");
 	ft_lstclear(&head, del_int);
 	ft_printf("Ending push_swap() program...\n");

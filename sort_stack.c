@@ -6,7 +6,7 @@
 /*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/22 08:54:55 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/01/22 22:56:39 by shiyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,15 +153,15 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 		
 	largest_position = find_position_of_largest(*stack_a);
 	shift_largest_to_top(*stack_a, largest_position, size);
-
-	second_largest_position = find_position_of_largest(*stack_a);
-	shift_largest_to_top(*stack_a, second_largest_position, size);
-	
+	if (size == 5)
+	{
+		second_largest_position = find_position_of_largest(*stack_a);
+		shift_largest_to_top(*stack_a, second_largest_position, size);
+	}
 	sort_three_elements(*stack_a, 3);
-
 	while (*stack_b)
 	{
-		pa(*stack_b);	
+		pa(*stack_b);
 		(*stack_b)->next;
 	}
 }
@@ -172,16 +172,14 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 void    sort_stack(t_list **stack_a)
 {
     int     size;
-    t_list  *current;
+    t_list  *current; //TODO: Remove
 	t_list	**stack_b;
 
-    //Create a temporary copy of inputs as stack a
-    current = *stack_a;
+    current = *stack_a; //TODO: Remove
     size = ft_lstsize(*stack_a);
     ft_printf("size = %i\n", size);
     stack_b = NULL;
 	
-	//TODO: Implement sorting algorithm formore than 100
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
