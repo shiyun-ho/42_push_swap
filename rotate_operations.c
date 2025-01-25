@@ -51,3 +51,4 @@ void	ra(t_list **stack_a)
     }
 	ft_printf("\n");
 }
+

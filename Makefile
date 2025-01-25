@@ -20,7 +20,7 @@ PROGRAM = push_swap
 CLIENT = client
 
 SRC = push_swap.c sort_stack.c swap_operations.c rotate_operations.c \
-	  reverse_rotate_operations.c \
+	  reverse_rotate_operations.c push_operations.c \
 
 OBJ = $(SRC:.c=.o)
 

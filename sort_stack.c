@@ -69,7 +69,7 @@ void	sort_three_elements(t_list **stack_a, int size)
 		int	b;
 		int	c;
 		
-		a = (*stack_a)->next->next->content; // Last node: First number added is always last node
+		a = (*stack_a)->next->next->content; // Last node: First number added 
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->content; // Last number added
 		ft_printf("Before sorting (FILO):\n%i\n%i\n%i\n", c, b, a);
@@ -119,7 +119,7 @@ int		find_position_of_largest(t_list *first_node)
  * @brief: Shifts largest element to top of stack and pushes it to another stack
  * @param: stack_a
  */
-void	shift_largest_to_top(t_list *stack_a, int largest_position, int size)
+void	shift_largest_to_top(t_list **stack_a, t_list **stack_b, int largest_position, int size)
 {
 	if (largest_position == 1)
 		sa(stack_a);
@@ -139,7 +139,7 @@ void	shift_largest_to_top(t_list *stack_a, int largest_position, int size)
 		if (largest_position == size)
 			rra(stack_a);
 	}
-	pb(stack_a);
+	pb(stack_a, stack_b);
 }
 
 /*
@@ -150,19 +150,19 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 {
 	int		largest_position;
 	int		second_largest_position;
-		
+
 	largest_position = find_position_of_largest(*stack_a);
-	shift_largest_to_top(*stack_a, largest_position, size);
+	shift_largest_to_top(stack_a, stack_b, largest_position, size);
 	if (size == 5)
 	{
 		second_largest_position = find_position_of_largest(*stack_a);
-		shift_largest_to_top(*stack_a, second_largest_position, size);
+		shift_largest_to_top(stack_a, stack_b, second_largest_position, size);
 	}
-	sort_three_elements(*stack_a, 3);
+	sort_three_elements(stack_a, 3);
 	while (*stack_b)
 	{
-		pa(*stack_b);
-		(*stack_b)->next;
+		pa(stack_a, stack_b);
+		*stack_b = (*stack_b)->next;
 	}
 }
 /**

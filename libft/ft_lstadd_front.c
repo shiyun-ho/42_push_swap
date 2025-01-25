@@ -17,13 +17,13 @@
  * @param: lst - address of pointer to first node/ head of a list
  * @param: new - address of a pointer to the node to be added to the list
  */
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new_node)
 {
-	if (!new)
+	if (!new_node)
 		return ;
 	// memory address of the next of NEW node is now head of the list
 		// NEW, NEW(next): LST
-	new->next = *lst;
-	//	head / first node of linked list = memory address of NEW node
-	*lst = new;
+	new_node->next = *lst;
+	//	head / first node of linked list = memory address of NEW_node
+	*lst = new_node;
 }

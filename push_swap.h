@@ -16,10 +16,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "./libft/libft.h"
 
 void	sort_stack(t_list **stack_a);
 void	sa(t_list **stack_a);
 void	ra(t_list **stack_a);
 void	rra(t_list **stack_a);
+void    pa(t_list **stack_a, t_list **stack_b);
+void    pb(t_list **stack_a, t_list **stack_b);
 
 #endif

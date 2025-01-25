@@ -53,7 +53,7 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 	long	num;
 	t_list	*new_node;
 
-	*array = malloc((argc - 1) * sizeof(int));
+	*array = (int *)malloc((argc - 1) * sizeof(int));
 	if (!*array)
 		return (0);
 
