@@ -94,7 +94,6 @@ int	main(int argc, char *argv[])
 	{
 		while (argv[i][j])
 		{
-			ft_printf("Checking current character: %c\n", argv[i][j]);
 			if (!ft_isdigit(argv[i][j]))
 			{
 				if (argv[i][j] == '-' || argv[i][j] == '+')

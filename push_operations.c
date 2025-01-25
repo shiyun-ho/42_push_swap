@@ -20,15 +20,34 @@
 void    pa(t_list **stack_a, t_list **stack_b)
 {
     t_list  *top_node;
-    
-    if (!(*stack_a))
-        return ;
-    top_node = *stack_a;
-    *stack_a = (*stack_a)->next;
-    top_node->next = *stack_b;
-    *stack_b = top_node;
-}
 
+    if (!(*stack_b))
+        return ;
+    top_node = *stack_b;
+    *stack_b = (*stack_b)->next;
+    top_node->next = *stack_a;
+    *stack_a = top_node;
+
+    ft_printf("\npa\n");
+    ft_printf("\npushed %i from stack_b to stack_a\n", top_node->content);
+
+    ft_printf("\nstack_a after pa:\n");
+    t_list *current_a = *stack_a;
+    while (current_a)
+    {
+        ft_printf("%i\n", current_a->content);
+        current_a = current_a->next;
+    }
+
+    ft_printf("\nstack_b after pa:\n");
+    t_list *current_b = *stack_b;
+    while (current_b)
+    {
+        ft_printf("%i\n", current_b->content);
+        current_b = current_b->next;
+    }
+    ft_printf("\n");
+}
 
 /**
  * @brief: Pushes the top element from stack_a to stack_b
@@ -39,11 +58,31 @@ void    pb(t_list **stack_a, t_list **stack_b)
 {
     t_list  *top_node;
 
-    if (!(*stack_b))
+    if (!(*stack_a))
         return ;
     top_node = *stack_a;
     *stack_a = (*stack_a)->next;
     top_node->next = *stack_b;
     *stack_b = top_node;
+
+    ft_printf("\npb\n");
+    ft_printf("pushed %i from stack_a to stack_b\n", top_node->content);
+
+    // Print stack_a and stack_b after the operation (for debugging)
+    ft_printf("\nstack_a after pb:\n");
+    t_list *current_a = *stack_a;
+    while (current_a)
+    {
+        ft_printf("%i\n", current_a->content);
+        current_a = current_a->next;
+    }
+
+    ft_printf("\nstack_b after pb:\n");
+    t_list *current_b = *stack_b;
+    while (current_b)
+    {
+        ft_printf("%i\n", current_b->content);
+        current_b = current_b->next;
+    }
+    ft_printf("\n");
 }
-// TODO: At the end of the execution of sorting, I should probably free stack_a, stack_b

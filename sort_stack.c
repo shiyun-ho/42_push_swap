@@ -56,6 +56,10 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
  */
 void	sort_three_elements(t_list **stack_a, int size)
 {
+	int	a;
+	int	b;
+	int	c;
+
 	if (size == 1)
 		return ;
 	else if (size == 2)
@@ -65,15 +69,17 @@ void	sort_three_elements(t_list **stack_a, int size)
 	}
 	else
 	{
-		int	a;
-		int	b;
-		int	c;
-		
 		a = (*stack_a)->next->next->content; // Last node: First number added 
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->content; // Last number added
-		ft_printf("Before sorting (FILO):\n%i\n%i\n%i\n", c, b, a);
 		sort_three_numbers(stack_a, a, b, c);
+	}
+	ft_printf("Starting sort_three_elements()...\n");
+	t_list *current = *stack_a;
+	while (current)
+	{
+		ft_printf("%i\n", current->content);
+		current = current->next;
 	}
 }
 
@@ -98,21 +104,26 @@ int		find_position_of_largest(t_list *first_node)
 {
 	t_list	*temp_node;
 	t_list	*largest_node;
-	int		position;
+	int		current_position;
+	int		biggest_position;
 
-	position = 0;
+	current_position = 0;
+	biggest_position = 0;
 	temp_node = first_node;
 	largest_node = first_node;
 	while (temp_node != NULL)
 	{
 		if (temp_node->content > largest_node->content)
 		{
-			position++;
+			biggest_position = current_position;
 			largest_node = temp_node;
+			ft_printf("temp_node is bigger than current largest node.\n>>>>Largest Position: Index %i - %i\n", biggest_position, largest_node->content);
 		}
 		temp_node = temp_node->next;
+		current_position++;
 	}
-	return (position);
+	ft_printf("Ended search for largest position \n\n\n");
+	return (biggest_position);
 }
 
 /**
@@ -122,7 +133,10 @@ int		find_position_of_largest(t_list *first_node)
 void	shift_largest_to_top(t_list **stack_a, t_list **stack_b, int largest_position, int size)
 {
 	if (largest_position == 1)
+	{
 		sa(stack_a);
+		// pb(stack_a, stack_b);
+	}
 	else
 	{
 		if (largest_position == 2)
@@ -152,17 +166,19 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	int		second_largest_position;
 
 	largest_position = find_position_of_largest(*stack_a);
+	ft_printf("\nPosition of largest = %i\n", largest_position);
 	shift_largest_to_top(stack_a, stack_b, largest_position, size);
 	if (size == 5)
 	{
 		second_largest_position = find_position_of_largest(*stack_a);
+		// TODO: Figure out why second_largest_position is 1 instead of 0?
+		ft_printf("\nPosition of 2nd largest = %i\n", second_largest_position);
 		shift_largest_to_top(stack_a, stack_b, second_largest_position, size);
 	}
 	sort_three_elements(stack_a, 3);
 	while (*stack_b)
 	{
 		pa(stack_a, stack_b);
-		*stack_b = (*stack_b)->next;
 	}
 }
 /**
@@ -173,21 +189,28 @@ void    sort_stack(t_list **stack_a)
 {
     int     size;
     t_list  *current; //TODO: Remove
-	t_list	**stack_b;
+	t_list	*stack_b;
 
     current = *stack_a; //TODO: Remove
     size = ft_lstsize(*stack_a);
     ft_printf("size = %i\n", size);
     stack_b = NULL;
 	
+	ft_printf("Stack: (Argument input from user)\n");
+    while (current)
+    {
+        ft_printf("%i\n", current->content);
+        current = current->next;
+    }
+
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
-		sort_five_elements(stack_a, stack_b, size);
+		sort_five_elements(stack_a, &stack_b, size);
 	// else if (size <= 100)
 	// 	sort_hundred_elements(stack_a);
 	// else
-	// 	sort_thousand_elements(stack_a);
+	//	sort_thousand_elements(stack_a);
 	// Printing all digits to allow checking
 	
 	// TODO: Remove later - checker function

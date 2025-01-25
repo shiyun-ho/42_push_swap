@@ -43,7 +43,6 @@ void	rra(t_list **stack_a)
 	current = *stack_a;
     while (current)
     {
-		ft_printf("\n");
         ft_printf("%i\n", current->content);
         current = current->next;
     }
