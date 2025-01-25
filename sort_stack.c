@@ -117,7 +117,8 @@ int		find_position_of_largest(t_list *first_node)
 		{
 			biggest_position = current_position;
 			largest_node = temp_node;
-			ft_printf("temp_node is bigger than current largest node.\n>>>>Largest Position: Index %i - %i\n", biggest_position, largest_node->content);
+			ft_printf("temp_node is bigger than current largest node.\n");
+			ft_printf(">>>>Largest Position: Index %i - %i\n", biggest_position, largest_node->content);
 		}
 		temp_node = temp_node->next;
 		current_position++;
@@ -133,10 +134,7 @@ int		find_position_of_largest(t_list *first_node)
 void	shift_largest_to_top(t_list **stack_a, t_list **stack_b, int largest_position, int size)
 {
 	if (largest_position == 1)
-	{
 		sa(stack_a);
-		// pb(stack_a, stack_b);
-	}
 	else
 	{
 		if (largest_position == 2)
