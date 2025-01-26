@@ -133,22 +133,19 @@ int		find_position_of_largest(t_list *first_node)
  */
 void	shift_largest_to_top(t_list **stack_a, t_list **stack_b, int largest_position, int size)
 {
+	int		count;
+
+	count = largest_position;
 	if (largest_position == 1)
 		sa(stack_a);
 	else
 	{
-		if (largest_position == 2)
+		while ((count > 0) && largest_position != (size - 1))
 		{
 			ra(stack_a);
-			ra(stack_a);
+			count--;
 		}
-		if (largest_position == 3 && size != 3)
-		{
-			ra(stack_a);
-			ra(stack_a);
-			ra(stack_a);
-		}
-		if (largest_position == size)
+		if (largest_position == (size - 1))
 			rra(stack_a);
 	}
 	pb(stack_a, stack_b);
@@ -169,7 +166,6 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	if (size == 5)
 	{
 		second_largest_position = find_position_of_largest(*stack_a);
-		// TODO: Figure out why second_largest_position is 1 instead of 0?
 		ft_printf("\nPosition of 2nd largest = %i\n", second_largest_position);
 		shift_largest_to_top(stack_a, stack_b, second_largest_position, size);
 	}
@@ -186,15 +182,15 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 void    sort_stack(t_list **stack_a)
 {
     int     size;
-    t_list  *current; //TODO: Remove
 	t_list	*stack_b;
 
-    current = *stack_a; //TODO: Remove
+    stack_b = NULL;
+
     size = ft_lstsize(*stack_a);
     ft_printf("size = %i\n", size);
-    stack_b = NULL;
-	
 	ft_printf("Stack: (Argument input from user)\n");
+
+    t_list *current = *stack_a; //TODO: Remove
     while (current)
     {
         ft_printf("%i\n", current->content);

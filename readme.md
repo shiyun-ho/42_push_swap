@@ -134,5 +134,8 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
       - Problems faced:
         1. At first, I've wanted to use BST to find top two largest nodes. 
         2. Decided perhaps it was too complex for me to introduce it here. 
+  - Bug: Issues with pushing elements off stack
+    - Found issues with pushing elements off the stack as my order of deassociationg was wrong
+  - Bug: Issues with actions of swapping elements based on position after refactoring
         
 ---

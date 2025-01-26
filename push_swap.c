@@ -80,7 +80,6 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
  * @brief: Takes an argument `stack a`, formatted as list of integers,
  *         Display list of instructions to sort `stack a` in ascending order
 */
-// TODO: Another check to handle if character is found in char[]
 int	main(int argc, char *argv[])
 {
 	int		*duplicate_check_array;
@@ -88,6 +87,7 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		return (0);
+	// TODO: Refactor this to another function
 	int i = 1;
 	int j = 0;
 	while (argv[i])
@@ -123,12 +123,14 @@ int	main(int argc, char *argv[])
 		ft_printf("Exiting function...\n");
 		exit(EXIT_FAILURE);
 	}
+	
 	ft_printf("\n");
 	ft_printf("Starting sorting of stack...\n");
+	
 	//TODO: Sort the stack with the nodes given
 	sort_stack(&head);
 	// TODO: Clear both stack_a and stack_b before exiting
-	// Perhaps to be done in sort_stack???
+
 	ft_printf("Clearing linked list nodes ...\n");
 	ft_lstclear(&head, del_int);
 	ft_printf("Ending push_swap() program...\n");

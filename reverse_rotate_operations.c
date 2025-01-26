@@ -21,9 +21,7 @@ void	rra(t_list **stack_a)
 	t_list	*temporary_node;
 	t_list	*second_last_node;
 	t_list	*last_node;
-	// TODO: Remove later - checker function
-	t_list  *current;
-	
+
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
 	temporary_node = *stack_a;
@@ -37,10 +35,10 @@ void	rra(t_list **stack_a)
 	*stack_a = last_node;
 	(*stack_a)->next = temporary_node;
 	second_last_node->next = NULL;
-	ft_printf("rra\n");
-	
+	ft_printf(">>>rra\n");
+
 	// TODO: Remove later - checker function
-	current = *stack_a;
+	t_list  *current = *stack_a;
     while (current)
     {
         ft_printf("%i\n", current->content);

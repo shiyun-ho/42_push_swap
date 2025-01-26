@@ -28,7 +28,7 @@ void    pa(t_list **stack_a, t_list **stack_b)
     top_node->next = *stack_a;
     *stack_a = top_node;
 
-    ft_printf("\npa\n");
+    ft_printf("\n>>>pa\n");
     ft_printf("\npushed %i from stack_b to stack_a\n", top_node->content);
 
     ft_printf("\nstack_a after pa:\n");
@@ -65,7 +65,7 @@ void    pb(t_list **stack_a, t_list **stack_b)
     top_node->next = *stack_b;
     *stack_b = top_node;
 
-    ft_printf("\npb\n");
+    ft_printf("\n>>>pb\n");
     ft_printf("pushed %i from stack_a to stack_b\n", top_node->content);
 
     // Print stack_a and stack_b after the operation (for debugging)

@@ -21,9 +21,7 @@ void	sa(t_list **stack_a)
 {
 	int		size;
 	t_list	*temporary_node;
-	// TODO: Remove later - checker function
-	t_list	*current;
-	
+
 	size = ft_lstsize(*stack_a);
 	if (size <= 1 || *stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
@@ -34,10 +32,10 @@ void	sa(t_list **stack_a)
 	temporary_node->next = (*stack_a)->next;
 	//make new top node point to original top node
 	(*stack_a)->next = temporary_node;
-	ft_printf("\nsa\n");
+	ft_printf("\n>>>sa\n");
 
 	// TODO: Remove later - checker function
-	current = *stack_a;
+	t_list	*current = *stack_a;
     while (current)
     {
         ft_printf("%i\n", current->content);

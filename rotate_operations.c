@@ -41,7 +41,7 @@ void	ra(t_list **stack_a)
 	temporary_node->next = NULL;
 
 	// TODO: Remove later - checker function
-	ft_printf("ra\n");
+	ft_printf(">>>ra\n");
 	current = *stack_a;
     while (current)
     {
