@@ -28,7 +28,7 @@ int		handle_error(int *array, t_list **node)
 int		has_duplicate(int *array, int size)
 {
 	int	i;
-		
+
 	i = 0;
 	while(i < (size - 1))
 	{
@@ -47,6 +47,7 @@ int		validate_input(long num, char *arg, int *array, int index)
 		return (0);
 	return (1);
 }
+
 int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 {
 	int		i;
@@ -56,7 +57,6 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 	*array = (int *)malloc((argc - 1) * sizeof(int));
 	if (!*array)
 		return (0);
-
 	i = 1;
 	*head = NULL;
 	while (i < argc)
@@ -120,19 +120,19 @@ int	main(int argc, char *argv[])
 	if (!create_linked_list(argc, argv, &duplicate_check_array, &head))
 	{
 		handle_error(duplicate_check_array, &head);
-		ft_printf("Exiting function...\n");
+		ft_printf(">>>Exiting function...\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	ft_printf("\n");
-	ft_printf("Starting sorting of stack...\n");
+	ft_printf(">>>Starting sorting of stack...\n");
 	
 	//TODO: Sort the stack with the nodes given
 	sort_stack(&head);
 	// TODO: Clear both stack_a and stack_b before exiting
 
-	ft_printf("Clearing linked list nodes ...\n");
+	ft_printf(">>>Clearing linked list nodes ...\n");
 	ft_lstclear(&head, del_int);
-	ft_printf("Ending push_swap() program...\n");
+	ft_printf(">>>Ending push_swap() program...\n");
 	return (1);
 }

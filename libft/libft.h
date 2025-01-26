@@ -25,6 +25,7 @@ typedef struct      s_list
 {
     int				content;
     struct s_list	*next;
+    int             rank;
 }                   t_list;
 
 int		ft_isalpha(int c);

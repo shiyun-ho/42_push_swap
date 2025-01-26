@@ -175,6 +175,48 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 		pa(stack_a, stack_b);
 	}
 }
+
+// TODO: Implement quick sort algorithm
+void	quick_sort(t_list **stack_a, int size)
+{
+	// Set pointer_1 at pivot element
+	// Pointer 1 is now at pivot element
+		// Compare pivot element with arr[0]
+			// if pivot_element < arr[0]:
+				// set pointer_2 at arr[0]
+			// else if (pivot_element > arr[0]):
+
+}
+
+void	index_map (t_list **stack_a, t_list **stack_b, int size)
+{
+	quick_sort(stack_a, size);
+}
+
+void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
+{
+	// TODO: Decipher the algorithm for sorting hundred elements
+	/**
+	A. Preprocessing: Index Mapping
+	a) Add `int index` to struct (Done)
+	b) Sort the original linked list. (Quick Sort algorithm)
+	c) Assign each number its index in the sorted list. 
+
+	B. Move bigger half to stack_b with bitwise operation as a criteria
+	a) Check Most Significant Bit (MSB) of each index
+	b) Push elements with a 0 in MSB to stack_b, 1 to stack_a
+
+	C. Divide and Conquer - Sort both simultaneously
+	a) Start by least significant bit in bitwise of all numbers in stack_a
+	b) If LSB = 1, move to top 
+	c) If LSB = 1, move to stack_b
+	d) Move all elements from stack_b to stack_a
+	e) Evaluate next most significant bit
+	f) Repeat steps #b to #e until last bit.  
+	 */
+	index_map(stack_a, stack_b, size);
+}
+
 /**
  * @brief: Sorts stack from user input
  * @param: `stack_a` - Stack generated from user inputs
@@ -201,8 +243,8 @@ void    sort_stack(t_list **stack_a)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
 		sort_five_elements(stack_a, &stack_b, size);
-	// else if (size <= 100)
-	// 	sort_hundred_elements(stack_a);
+	else if (size <= 100)
+		sort_hundred_elements(stack_a, &stack_b, size);
 	// else
 	//	sort_thousand_elements(stack_a);
 	// Printing all digits to allow checking
