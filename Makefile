@@ -6,7 +6,7 @@
 #    By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 20:03:42 by hshi-yun          #+#    #+#              #
-#    Updated: 2025/02/01 14:38:53 by hshi-yun         ###   ########.fr        #
+#    Updated: 2025/02/01 21:05:59 by hshi-yun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CLIENT = client
 
 SRC = push_swap.c arg_check_utils.c sort_stack.c swap_operations.c \
 	  rotate_operations.c reverse_rotate_operations.c push_operations.c \
+	  quick_sort.c \
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/01 14:37:00 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:07:37 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ void	ra(t_list **stack_a);
 void	rra(t_list **stack_a);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
+
+// Quick sort utils
+void	partition_list(t_list *pivot, t_list **lt_sublist, t_list **gt_sublist);
+t_list	*combine_sublists(t_list *pivot, t_list *lt_list, t_list *gt_list);
+t_list	*quick_sort(t_list **head_ref);
 
 #endif

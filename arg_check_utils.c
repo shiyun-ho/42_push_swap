@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:28:37 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/01 14:35:02 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:08:11 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void	check_valid_argument(char *arg)
 	while (arg[j])
 	{
 		if (ft_isdigit(arg[j]))
-			;
+			return ;
 		else if (j == 0)
 		{
 			if (arg[j] == '+' || arg[j] == '-')
-				;
+				return ;
 		}
 		else
 		{
