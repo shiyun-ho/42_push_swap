@@ -6,17 +6,17 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/01 21:07:37 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:23:04 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include "./libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+# include "./libft/libft.h"
 
 // Argument checking utils
 int		handle_error(int *array, t_list **node);

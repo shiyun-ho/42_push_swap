@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/01 21:09:11 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:24:13 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	}
 }
 
-// void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
-// {
+void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
+{
 // 	// TODO: Decipher the algorithm for sorting hundred elements
 // 	/**
 // 	A. Preprocessing: Index Mapping
@@ -197,8 +197,10 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 // 	e) Evaluate next most significant bit
 // 	f) Repeat steps #b to #e until last bit.  
 // 	 */
-	
-// }
+	// Index Mapping
+	quick_sort(stack_a);
+	// Use 
+}
 
 /**
  * @brief: Sorts stack from user input
