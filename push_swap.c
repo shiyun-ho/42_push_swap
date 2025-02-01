@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shiyun <shiyun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/01/22 22:57:15 by shiyun           ###   ########.fr       */
+/*   Updated: 2025/02/01 11:56:44 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,40 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 }
 
 /**
+ * @brief: Checks user arg for valid operator
+ */
+int		is_valid_operator(char c, int index)
+{
+	if ((c == '+' || c == '-') && index == 0)
+		return (1);
+	else
+		return (0);
+}
+
+/**
+ * @brief: Checks for errorenous user input
+*/
+int		check_valid_argument(char *arg)
+{
+	int		j;
+
+	j = 0;
+	while (arg[j])
+	{
+		if (ft_isdigit(arg[j]))
+			exit(EXIT_SUCCESS);
+		else if (is_valid_operator(arg[j], j))
+			exit(EXIT_SUCCESS);
+		else
+		{
+			ft_printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
+		j++;
+	}
+}
+
+/**
  * @brief: Takes an argument `stack a`, formatted as list of integers,
  *         Display list of instructions to sort `stack a` in ascending order
 */
@@ -89,32 +123,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	// TODO: Refactor this to another function
 	int i = 1;
-	int j = 0;
 	while (argv[i])
 	{
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-			{
-				if (argv[i][j] == '-' || argv[i][j] == '+')
-				{
-					if (j != 0)
-					{
-						ft_printf("Error\n");
-						ft_printf("Contains operator: %c\n", argv[i][j]);
-						exit(EXIT_FAILURE);
-					}
-				}
-				else
-				{
-					ft_printf("Error\n");
-					ft_printf("Not a digit: %c\n", argv[i][j]);
-					exit(EXIT_FAILURE);
-				}
-			}
-			j++;
-		}
-		j = 0;
+		check_valid_argument(argv[i]);
 		i++;
 	}
 	if (!create_linked_list(argc, argv, &duplicate_check_array, &head))

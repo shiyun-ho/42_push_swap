@@ -3,6 +3,8 @@
         "libft.h": "c"
     },
     "[c]": {
-        "editor.defaultFormatter": "keyhr.42-c-format"
+        "editor.defaultFormatter": "keyhr.42-c-format",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
     },
 }
