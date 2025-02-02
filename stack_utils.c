@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:01:53 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/02 16:03:34 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:23:11 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ void	print_all_nodes(t_list *node)
 		node = node->next;
 	}
 	ft_printf("NULL\n");
+}
+
+void	print_all_nodes_by_rank(t_list *node)
+{
+	while (node)
+	{
+		ft_printf("%d (Rank: %d) -> ", node->content, node->rank);
+		node = node->next;
+	}
+	ft_printf("NULL\n\n");
 }

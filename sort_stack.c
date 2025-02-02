@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/02 16:15:00 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:27:13 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,10 +199,10 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 // // 	 */
 // }
 
-void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
-{
-	quick_sort(stack_a);
-}
+// void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
+// {
+// 	quick_sort(stack_a);
+// }
 
 
 /**
@@ -227,9 +227,12 @@ void    sort_stack(t_list **stack_a)
 	else if (size <= 100)
 	{
 		*stack_a = reverse_stack(*stack_a);
-		sort_hundred_elements(stack_a, &stack_b, size);
+		quick_sort(stack_a);
+		// sort_hundred_elements(stack_a, &stack_b, size);
 	}
 
 	ft_printf("\n\nAfter sorting (FILO):\n");
+	*stack_a = reverse_stack(*stack_a);
 	print_all_nodes(*stack_a);
+	print_all_nodes_by_rank(*stack_a);
 }
