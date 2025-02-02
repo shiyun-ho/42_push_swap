@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/02 16:27:13 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:54:59 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ void    sort_stack(t_list **stack_a)
 	{
 		*stack_a = reverse_stack(*stack_a);
 		quick_sort(stack_a);
+		*stack_a = reverse_stack(*stack_a);
 		// sort_hundred_elements(stack_a, &stack_b, size);
 	}
 
