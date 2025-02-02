@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/01 21:23:04 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:10:41 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ void	pb(t_list **stack_a, t_list **stack_b);
 void	partition_list(t_list *pivot, t_list **lt_sublist, t_list **gt_sublist);
 t_list	*combine_sublists(t_list *pivot, t_list *lt_list, t_list *gt_list);
 t_list	*quick_sort(t_list **head_ref);
+
+// Stack utils
+t_list	*reverse_stack(t_list *head);
+void	print_all_nodes(t_list *node);
 
 #endif

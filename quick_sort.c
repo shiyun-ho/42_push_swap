@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:34:53 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/02 15:44:46 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:08:01 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 	2 - Partition around the pivot
 	3 - Recursively sort sublist
 	4 - Join the sorted sublist back together
-	@reference: https://ideone.com/927LhE
 */
 
 void    print_nodes(t_list *node)
@@ -60,14 +59,7 @@ void	partition_list(t_list *pivot, t_list **lt_sublist, t_list **gt_sublist)
 		current_node = next_node;
 	}
 	pivot->next = NULL;
-	// Debug prints
-    ft_printf("\n\nPivot: %i\n", pivot->content);
-    ft_printf("Less than sublist:\n");
-    print_nodes(*lt_sublist);
-    ft_printf("Greater than or equal sublist:\n");
-    print_nodes(*gt_sublist);
 }
-
 
 t_list	*combine_sublists(t_list *pivot, t_list *lt_list, t_list *gt_list)
 {
@@ -75,7 +67,7 @@ t_list	*combine_sublists(t_list *pivot, t_list *lt_list, t_list *gt_list)
 	t_list	*sorted_lt_tail;
 
 	pivot->next = gt_list;
-	
+
 	sorted_gt_tail = pivot;
 
 	while (sorted_gt_tail && sorted_gt_tail->next)
@@ -110,27 +102,10 @@ t_list	*quick_sort(t_list **head_ref)
 	gt_sublist = NULL;
 	if (*head_ref == NULL || (*head_ref)->next == NULL)
 		return (*head_ref);
-	ft_printf("Base case reached: head_ref = %p\n", (void *)*head_ref);
 	partition_list(pivot, &lt_sublist, &gt_sublist);
-	
-	ft_printf("\n\n>>>Starting recursive call of quick sort on lt and gt sublist:\n\n");
-	
-	ft_printf("Sorting less than sublist:\n");
-	print_nodes(lt_sublist);
 	quick_sort(&lt_sublist);
-	ft_printf("After sorting:\n");
-	print_nodes(lt_sublist);
-	
-	ft_printf("Sorting less than sublist:\n");
-	print_nodes(gt_sublist);
 	quick_sort(&gt_sublist);
-	ft_printf("After sorting:\n");
-	print_nodes(gt_sublist);
-	
 	*head_ref = combine_sublists(pivot, lt_sublist, gt_sublist);
-	ft_printf("Combined sublists:\n");
-	print_nodes(*head_ref);
-	
 	current = *head_ref;
 	i = 0;
 	while (current)

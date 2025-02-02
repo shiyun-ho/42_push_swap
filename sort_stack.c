@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/02 15:23:08 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:15:00 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,38 +197,13 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 // // 	e) Evaluate next most significant bit
 // // 	f) Repeat steps #b to #e until last bit.  
 // // 	 */
-// 	// Index Mapping
-// 	quick_sort(stack_a);
-// 	// Use bitwise operation to decide where to move 
 // }
 
-t_list	*reverse_stack(t_list *head)
+void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
 {
-	t_list	*prev;
-	t_list	*current;
-	t_list	*next;
+	quick_sort(stack_a);
+}
 
-	prev = NULL;
-	current = head;
-	next = NULL;
-	while (current)
-	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
-	return (prev);
-}
-void    print_all_nodes(t_list *node)
-{
-	while (node)
-	{
-		ft_printf("%d -> ", node->content);
-		node = node->next;
-	}
-	ft_printf("NULL\n");
-}
 
 /**
  * @brief: Sorts stack from user input
@@ -236,21 +211,14 @@ void    print_all_nodes(t_list *node)
  */
 void    sort_stack(t_list **stack_a)
 {
-    int     size;
+	int		size;
 	t_list	*stack_b;
 
-    stack_b = NULL;
+	stack_b = NULL;
+	size = ft_lstsize(*stack_a);
 
-    size = ft_lstsize(*stack_a);
-    ft_printf("size = %i\n", size);
 	ft_printf("Stack: (Argument input from user)\n");
-
-    t_list *current = *stack_a; //TODO: Remove
-    while (current)
-    {
-        ft_printf("%i\n", current->content);
-        current = current->next;
-    }
+	print_all_nodes(*stack_a);
 
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
@@ -258,27 +226,10 @@ void    sort_stack(t_list **stack_a)
 		sort_five_elements(stack_a, &stack_b, size);
 	else if (size <= 100)
 	{
-		ft_printf("Entering sort 100 elements\n\n");
-		
-		ft_printf("Before reversal:\n");
-		print_all_nodes(*stack_a);
-		
 		*stack_a = reverse_stack(*stack_a);
-		
-		ft_printf("After reversal:\n");
-		print_all_nodes(*stack_a);
-		
-		ft_printf("Starting quick sort: \n");
-		quick_sort(stack_a);
+		sort_hundred_elements(stack_a, &stack_b, size);
 	}
-		// sort_hundred_elements(stack_a, &stack_b, size);
 
-	// TODO: Remove later - checker function
-	current = *stack_a;
 	ft_printf("\n\nAfter sorting (FILO):\n");
-    while (current)
-    {
-        ft_printf("%i\n", current->content);
-        current = current->next;
-    }
+	print_all_nodes(*stack_a);
 }
