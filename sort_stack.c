@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/01 21:24:13 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:23:08 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,30 +176,58 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	}
 }
 
-void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
+// void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
+// {
+// // 	// TODO: Decipher the algorithm for sorting hundred elements
+// // 	/**
+// // 	A. Preprocessing: Index Mapping
+// // 	a) Add `int index` to struct (Done)
+// // 	b) Sort the original linked list. (Quick Sort algorithm) (Done)
+// // 	c) Assign each number its index in the sorted list. (Done)
+
+// // 	B. Move bigger half to stack_b with bitwise operation as a criteria
+// // 	a) Check Most Significant Bit (MSB) of each index
+// // 	b) Push elements with a 0 in MSB to stack_b, 1 to stack_a
+
+// // 	C. Divide and Conquer - Sort both simultaneously
+// // 	a) Start by least significant bit in bitwise of all numbers in stack_a
+// // 	b) If LSB = 1, move to top 
+// // 	c) If LSB = 1, move to stack_b
+// // 	d) Move all elements from stack_b to stack_a
+// // 	e) Evaluate next most significant bit
+// // 	f) Repeat steps #b to #e until last bit.  
+// // 	 */
+// 	// Index Mapping
+// 	quick_sort(stack_a);
+// 	// Use bitwise operation to decide where to move 
+// }
+
+t_list	*reverse_stack(t_list *head)
 {
-// 	// TODO: Decipher the algorithm for sorting hundred elements
-// 	/**
-// 	A. Preprocessing: Index Mapping
-// 	a) Add `int index` to struct (Done)
-// 	b) Sort the original linked list. (Quick Sort algorithm) (Done)
-// 	c) Assign each number its index in the sorted list. (Done)
+	t_list	*prev;
+	t_list	*current;
+	t_list	*next;
 
-// 	B. Move bigger half to stack_b with bitwise operation as a criteria
-// 	a) Check Most Significant Bit (MSB) of each index
-// 	b) Push elements with a 0 in MSB to stack_b, 1 to stack_a
-
-// 	C. Divide and Conquer - Sort both simultaneously
-// 	a) Start by least significant bit in bitwise of all numbers in stack_a
-// 	b) If LSB = 1, move to top 
-// 	c) If LSB = 1, move to stack_b
-// 	d) Move all elements from stack_b to stack_a
-// 	e) Evaluate next most significant bit
-// 	f) Repeat steps #b to #e until last bit.  
-// 	 */
-	// Index Mapping
-	quick_sort(stack_a);
-	// Use 
+	prev = NULL;
+	current = head;
+	next = NULL;
+	while (current)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	return (prev);
+}
+void    print_all_nodes(t_list *node)
+{
+	while (node)
+	{
+		ft_printf("%d -> ", node->content);
+		node = node->next;
+	}
+	ft_printf("NULL\n");
 }
 
 /**
@@ -228,12 +256,23 @@ void    sort_stack(t_list **stack_a)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
 		sort_five_elements(stack_a, &stack_b, size);
-	// else if (size <= 100)
-	// 	sort_hundred_elements(stack_a, &stack_b, size);
-	// else
-	//	sort_thousand_elements(stack_a);
-	// Printing all digits to allow checking
-	
+	else if (size <= 100)
+	{
+		ft_printf("Entering sort 100 elements\n\n");
+		
+		ft_printf("Before reversal:\n");
+		print_all_nodes(*stack_a);
+		
+		*stack_a = reverse_stack(*stack_a);
+		
+		ft_printf("After reversal:\n");
+		print_all_nodes(*stack_a);
+		
+		ft_printf("Starting quick sort: \n");
+		quick_sort(stack_a);
+	}
+		// sort_hundred_elements(stack_a, &stack_b, size);
+
 	// TODO: Remove later - checker function
 	current = *stack_a;
 	ft_printf("\n\nAfter sorting (FILO):\n");
