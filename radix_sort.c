@@ -10,46 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
-// {
-// // 	// TODO: Decipher the algorithm for sorting hundred elements
-// // 	/**
-// // 	A. Preprocessing: Index Mapping
-// // 	a) Add `int index` to struct (Done)
-// // 	b) Sort the original linked list. (Quick Sort algorithm) (Done)
-// // 	c) Assign each number its index in the sorted list. (Done)
-
-// // 	B. Move bigger half to stack_b with bitwise operation as a criteria
-// // 	a) Check Most Significant Bit (MSB) of each index
-// // 	b) Push elements with a 0 in MSB to stack_b, 1 to stack_a
-
-// // 	C. Divide and Conquer - Sort both simultaneously
-// // 	a) Start by least significant bit in bitwise of all numbers in stack_a
-// // 	b) If LSB = 1, move to top 
-// // 	c) If LSB = 1, move to stack_b
-// // 	d) Move all elements from stack_b to stack_a
-// // 	e) Evaluate next most significant bit
-// // 	f) Repeat steps #b to #e until last bit.  
-// // 	 */
-// }
-
-/**
-	@brief: Implementation of radix sort
-	@steps:
-	1) Determine number of bits to represent largest rank
-	2) From LSB to MSB:
-		- For each bit, push elements with 0 to stack_b
-		- For each bit, push elements with 1 to stack_a
-		- Restore all elements from stack_b to stack_a
- */
 /**
 	@brief: Calculate bits for largest rank
 	@returns: Value in bits form
+	@reason: Number of iterations & comparisons for radix sort
  */
-int		bits_for_highest_rank(int value)
+int		bits_for_highest_rank(int rank)
 {
-	int		bit_value;
+	int		num_bits;
 
+	num_bits = 0;
+	while (rank > 0)
+	{
+		num_bits++;
+		rank >>= 1;
+	}	
 
-	return (bit_value);
+	return (num_bits);
+}
+
+void	radix_sort(t_list **stack_a, t_list **stack_b, int size)
+{
+	int		num_bits;
+	int		bit;
+	int		i;
+	int		rank;
+
+	num_bits = bits_for_highest_rank(size - 1);
+	bit = 0;
+	i = 0;
+	while (bit < num_bits)
+	{
+		ft_printf("Processing bit: %d\n", bit);
+		
+		// TODO: Traverse through all the elements in the linkedlist (as stack)
+		while (i < size)
+		{
+			rank = (*stack_a)->next;
+			if ((rank) & (1 << bit)) == 0) //if bit == 0
+				//Action
+			else // if bit == 1
+				//Action: Move the element down by rotating
+			i++;
+		}
+		// TODO: Restore elements from stack_b to stack_a
+		while (*stack_b)
+		{
+			// Push to stack_b 
+			pa(*stack_b);
+			*stack_b = (*stack_b)->next;
+		}
+		bit++;
+	}		
 }
