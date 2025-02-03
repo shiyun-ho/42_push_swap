@@ -178,29 +178,6 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 
 // void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
 // {
-// // 	// TODO: Decipher the algorithm for sorting hundred elements
-// // 	/**
-// // 	A. Preprocessing: Index Mapping
-// // 	a) Add `int index` to struct (Done)
-// // 	b) Sort the original linked list. (Quick Sort algorithm) (Done)
-// // 	c) Assign each number its index in the sorted list. (Done)
-
-// // 	B. Move bigger half to stack_b with bitwise operation as a criteria
-// // 	a) Check Most Significant Bit (MSB) of each index
-// // 	b) Push elements with a 0 in MSB to stack_b, 1 to stack_a
-
-// // 	C. Divide and Conquer - Sort both simultaneously
-// // 	a) Start by least significant bit in bitwise of all numbers in stack_a
-// // 	b) If LSB = 1, move to top 
-// // 	c) If LSB = 1, move to stack_b
-// // 	d) Move all elements from stack_b to stack_a
-// // 	e) Evaluate next most significant bit
-// // 	f) Repeat steps #b to #e until last bit.  
-// // 	 */
-// }
-
-// void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
-// {
 // 	quick_sort(stack_a);
 // }
 
