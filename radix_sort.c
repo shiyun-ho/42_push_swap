@@ -48,9 +48,11 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int size)
 		{
 			rank = (*stack_a)->next;
 			if ((rank) & (1 << bit)) == 0) //if bit == 0
-				//Action
+				//Action: Push element to b?
+				pb(*stack_a);
 			else // if bit == 1
 				//Action: Move the element down by rotating
+				ra(*stack_a);
 			i++;
 		}
 		// TODO: Restore elements from stack_b to stack_a
