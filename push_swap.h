@@ -43,4 +43,8 @@ t_list	*reverse_stack(t_list *head);
 void	print_all_nodes(t_list *node);
 void	print_all_nodes_by_rank(t_list *node);
 
+// Radis sort utils
+int		bits_for_highest_rank(int rank);
+void	radix_sort(t_list **stack_a, t_list **stack_b, int size);
+
 #endif

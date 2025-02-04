@@ -68,7 +68,6 @@ void    pb(t_list **stack_a, t_list **stack_b)
     ft_printf("\n>>>pb\n");
     ft_printf("pushed %i from stack_a to stack_b\n", top_node->content);
 
-    // Print stack_a and stack_b after the operation (for debugging)
     ft_printf("\nstack_a after pb:\n");
     t_list *current_a = *stack_a;
     while (current_a)

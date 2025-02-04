@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft/libft.h"
+#include "push_swap.h"
+
 /**
 	@brief: Calculate bits for largest rank
 	@returns: Value in bits form
@@ -38,30 +41,20 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int size)
 
 	num_bits = bits_for_highest_rank(size - 1);
 	bit = 0;
-	i = 0;
 	while (bit < num_bits)
 	{
-		ft_printf("Processing bit: %d\n", bit);
-		
-		// TODO: Traverse through all the elements in the linkedlist (as stack)
+		i = 0;
 		while (i < size)
 		{
-			rank = (*stack_a)->next;
-			if ((rank) & (1 << bit)) == 0) //if bit == 0
-				//Action: Push element to b?
-				pb(*stack_a);
+			rank = (*stack_a)->rank;
+			if ((rank & (1 << bit)) == 0) //if bit == 0
+				pb(stack_a, stack_b);
 			else // if bit == 1
-				//Action: Move the element down by rotating
-				ra(*stack_a);
+				ra(stack_a);
 			i++;
 		}
-		// TODO: Restore elements from stack_b to stack_a
 		while (*stack_b)
-		{
-			// Push to stack_b 
-			pa(*stack_b);
-			*stack_b = (*stack_b)->next;
-		}
+			pa(stack_a, stack_b);
 		bit++;
 	}		
 }

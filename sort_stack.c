@@ -176,12 +176,6 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	}
 }
 
-// void	sort_hundred_elements(t_list **stack_a, t_list **stack_b, int size)
-// {
-// 	quick_sort(stack_a);
-// }
-
-
 /**
  * @brief: Sorts stack from user input
  * @param: `stack_a` - Stack generated from user inputs
@@ -201,16 +195,15 @@ void    sort_stack(t_list **stack_a)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
 		sort_five_elements(stack_a, &stack_b, size);
-	else if (size <= 100)
+	else 
 	{
 		*stack_a = reverse_stack(*stack_a);
 		quick_sort(stack_a);
+		radix_sort(stack_a, &stack_b, size);
 		*stack_a = reverse_stack(*stack_a);
-		// sort_hundred_elements(stack_a, &stack_b, size);
 	}
 
 	ft_printf("\n\nAfter sorting (FILO):\n");
-	*stack_a = reverse_stack(*stack_a);
 	print_all_nodes(*stack_a);
 	print_all_nodes_by_rank(*stack_a);
 }

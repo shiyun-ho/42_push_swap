@@ -21,7 +21,7 @@ CLIENT = client
 
 SRC = push_swap.c arg_check_utils.c stack_utils.c sort_stack.c swap_operations.c \
 	  rotate_operations.c reverse_rotate_operations.c push_operations.c \
-	  quick_sort.c \
+	  quick_sort.c radix_sort.c \
 
 OBJ = $(SRC:.c=.o)
 
