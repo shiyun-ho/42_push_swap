@@ -6,12 +6,12 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:34:53 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/02 16:20:52 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:41:53 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./libft/libft.h"
-# include "push_swap.h"
+#include "./libft/libft.h"
+#include "push_swap.h"
 
 /** 
 	@brief: Implementation of Quick Sort Algorithm

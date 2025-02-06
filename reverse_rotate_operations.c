@@ -6,11 +6,11 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 20:04:51 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/01/17 20:55:08 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:42:01 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./libft/libft.h"
+#include "./libft/libft.h"
 
 /**
  * @brief: reverse rotate a: Shift all elements of stack_a down by one
