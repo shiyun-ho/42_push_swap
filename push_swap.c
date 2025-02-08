@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/08 14:30:14 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:38:35 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ int		count_no_in_string(char *argv[])
 
 char	**handle_string_input(char *argv[])
 {
+	int		no_of_inputs;
 	char	**args_array;
 
+	no_of_inputs = count_no_in_string(argv);
+	*args_array = (int *)malloc((no_of_inputs - 1) * sizeof(int));
 	args_array = ft_split(argv[1], ' ');
 	if (!args_array)
 		handle_error(NULL, NULL);
-	
+
 	return (args_array);
 }
 
@@ -64,14 +67,16 @@ int	main(int argc, char *argv[])
 {
 	int		*duplicate_check_array;
 	t_list	*head;
+	char	**args_array;
 	int		i;
 
 	if (argc == 1)
 		return (0);
 	if (argc >= 2 && ft_strchr(argv[1], ' ') != NULL)
 	{
-		argv = handle_string_input(argv);
-		argc = count_no_in_string(argv) + 1;
+		args_array = handle_string_input(argv);
+		argc = count_no_in_string(args_array) + 1;
+		argv = args_array;
 	}
 	i = 1;
 	while (argv[i])
@@ -86,6 +91,16 @@ int	main(int argc, char *argv[])
 	}
 	sort_stack(&head);
 	ft_lstclear(&head, del_int);
+	if (args_array)
+	{
+		i = 0;
+		while (args_array[i])
+		{
+			free(args_array[i]);
+			i++;
+		}
+		free(args_array);
+	}
 	return (1);
 }
 
