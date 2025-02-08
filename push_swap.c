@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/08 14:38:35 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:39:17 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**handle_string_input(char *argv[])
 	args_array = ft_split(argv[1], ' ');
 	if (!args_array)
 		handle_error(NULL, NULL);
-
 	return (args_array);
 }
 
