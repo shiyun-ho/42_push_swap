@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/06 20:36:59 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/12 21:56:50 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "./libft/libft.h"
+
+// Parsing processing utils
+char	**handle_string_input(char *arg);
+int		count_no_in_array(char **array);
+int		count_no_in_quoted_arg(char *argv[]);
+char	**process_quoted_arg(int *argc, char ***argv);
 
 // Argument checking utils
 int		handle_error(int *array, t_list **node);
