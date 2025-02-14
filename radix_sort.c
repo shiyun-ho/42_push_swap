@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:49:05 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/12 22:22:22 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:21:41 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,19 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int size)
 		while (i < size)
 		{
 			rank = (*stack_a)->rank;
-			if ((rank) && (1 << bit) == 0) //if bit is 0
-				// decide action
-			else 
-				// decide action
+			//if bit at current position is 0
+			if ((rank) && (1 << bit) == 0){
+				//determine if position is nearer to the top - ra 
+				//or bottom - rra
+				calculate_optimal_move();
+				execute_move();
+			}
+			// if bit at current position is 1
+			else{
+				// decide if position is nearer to the top - ra
+				// or bottom - rra
+				// perhaps diffent function?
+			} 
 			i++;
 		}
 		// Restore all bits from stack_b to stack_a
