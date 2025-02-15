@@ -58,6 +58,7 @@ void	sort_three_elements(t_list **stack_a, int size)
 		return ;
 	else if (size == 2)
 	{
+		ft_printf("Entered size = 2");
 		if ((*stack_a)->content > (*stack_a)->next->content)
 			sa(stack_a);
 	}

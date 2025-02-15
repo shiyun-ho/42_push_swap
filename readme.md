@@ -150,3 +150,23 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   ARG="1 7 8"; ./push_swap $ARG | ./checker_linux $ARG
     OK
   ``
+  - Bug: 
+  ```
+   ~/Documents/circle 2/42_push_swap  on v2_fix !3 ?65  ARG="1 2" | ./push_swap $ARG
+      Counted no in quoted arg: 4
+      Size: 3
+      Before sort...
+      >>> stack_a:
+      2
+      3
+      1
+      rra
+
+    ~/Documents/circle 2/42_push_swap  on v2_fix !3 ?65  ./push_swap " 1 2"          
+      Counted no in quoted arg: 3
+      Size: 2
+      Before sort...
+      >>> stack_a:
+      1
+      2
+  ```

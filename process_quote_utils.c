@@ -45,6 +45,7 @@ int		count_no_in_quoted_arg(char *argv[])
 	split_count = count_no_in_array(args_array);
 	free(args_array);
 	total_no = split_count + 1;
+	ft_printf("Counted no in quoted arg: %i\n", total_no);
 	return (total_no);
 }
 
