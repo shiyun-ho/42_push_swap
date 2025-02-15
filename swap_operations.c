@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 08:55:57 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/06 20:42:19 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:40:12 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,5 @@ void	sa(t_list **stack_a)
 	temporary_node->next = (*stack_a)->next;
 	//make new top node point to original top node
 	(*stack_a)->next = temporary_node;
-	ft_printf("\n>>>sa\n");
-
-	// TODO: Remove later - checker function
-	t_list	*current = *stack_a;
-    while (current)
-    {
-        ft_printf("%i\n", current->content);
-        current = current->next;
-    }
-	ft_printf("\n");
+	ft_printf("sa\n");
 }

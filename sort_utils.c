@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/06 20:38:21 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:41:49 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	sort_three_elements(t_list **stack_a, int size)
 	int		a;
 	int		b;
 	int		c;
-	t_list	*current;
 
 	if (size == 1)
 		return ;
@@ -74,13 +73,6 @@ void	sort_three_elements(t_list **stack_a, int size)
 		b = (*stack_a)->next->content;
 		c = (*stack_a)->content; // Last number added
 		sort_three_numbers(stack_a, a, b, c);
-	}
-	ft_printf("Starting sort_three_elements()...\n");
-	current = *stack_a;
-	while (current)
-	{
-		ft_printf("%i\n", current->content);
-		current = current->next;
 	}
 }
 
@@ -118,13 +110,10 @@ int		find_position_of_largest(t_list *first_node)
 		{
 			biggest_position = current_position;
 			largest_node = temp_node;
-			ft_printf("temp_node is bigger than current largest node.\n");
-			ft_printf(">>>>Largest Position: Index %i - %i\n", biggest_position, largest_node->content);
 		}
 		temp_node = temp_node->next;
 		current_position++;
 	}
-	ft_printf("Ended search for largest position \n\n\n");
 	return (biggest_position);
 }
 
@@ -162,12 +151,10 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	int		second_largest_position;
 
 	largest_position = find_position_of_largest(*stack_a);
-	ft_printf("\nPosition of largest = %i\n", largest_position);
 	shift_top(stack_a, stack_b, largest_position, size);
 	if (size == 5)
 	{
 		second_largest_position = find_position_of_largest(*stack_a);
-		ft_printf("\nPosition of 2nd largest = %i\n", second_largest_position);
 		shift_top(stack_a, stack_b, second_largest_position, size);
 	}
 	sort_three_elements(stack_a, 3);

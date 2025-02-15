@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:34:53 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/06 20:41:53 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:31:00 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,9 @@
 	4 - Join the sorted sublist back together
 */
 
-void    print_nodes(t_list *node)
-{
-	while (node)
-	{
-		ft_printf("%d -> ", node->content);
-		node = node->next;
-	}
-	ft_printf("NULL\n");
-}
-
 /**
 	@brief: Paritions list into lesser than and greater than sublists
  */
-
 void	partition_list(t_list *pivot, t_list **lt_sublist, t_list **gt_sublist)
 {
 	t_list	*current_node;
