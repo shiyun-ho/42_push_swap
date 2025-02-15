@@ -68,7 +68,8 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 		new_node = ft_lstnew((int)num);
 		if (!new_node)
 			handle_error(*array, head);
-		ft_lstadd_front(head, new_node);
+		// ft_lstadd_front(head, new_node);
+		ft_lstadd_back(head, new_node);
 		if (!validate_input(num, argv[i], *array, i))
 			handle_error(*array, head);
 		i++;

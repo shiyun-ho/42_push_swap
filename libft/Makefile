@@ -26,7 +26,7 @@ SRC = ft_putchar_fd.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 	  ft_striteri.c ft_split.c ft_printf.c ft_printchar.c ft_printstr.c \
 	  ft_lstnew.c ft_lstadd_front.c ft_lstclear.c ft_lst_del_int.c ft_lstsize.c \
 	  ft_printnbr.c ft_print_unsigned_int.c ft_print_hexadecimal.c ft_print_pointer.c \
-	  ft_print_no_specifier.c ft_print_percent.c ft_print_exception.c \
+	  ft_print_no_specifier.c ft_print_percent.c ft_print_exception.c ft_lstadd_back.c \
 
 OBJ = $(SRC:.c=.o)
 
