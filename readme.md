@@ -137,5 +137,16 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   - Bug: Issues with pushing elements off stack
     - Found issues with pushing elements off the stack as my order of deassociationg was wrong
   - Bug: Issues with actions of swapping elements based on position after refactoring
-        
----
+  - Bug: 
+  ```
+  ARG="2 3 1"; ./push_swap $ARG | ./checker_linux $ARG
+    KO
+  ARG="6 8 1"; ./push_swap $ARG | ./checker_linux $ARG
+    KO
+  ARG="3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
+    OK
+  ARG="3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
+    OK
+  ARG="1 7 8"; ./push_swap $ARG | ./checker_linux $ARG
+    OK
+  ``

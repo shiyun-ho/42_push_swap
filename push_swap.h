@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/15 13:31:20 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 14:32:35 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
 
 // Sort utils
-void	sort_three_numbers(t_list **stack_a, int a, int b, int c);
+// void	sort_three_numbers(t_list **stack_a, int a, int b, int c);
+void	sort_three_numbers(t_list **stack_a);
 void	sort_three_elements(t_list **stack_a, int size);
 int		find_position_of_largest(t_list *first_node);
 void	shift_top(t_list **stack_a, t_list **stack_b, int position, int size);

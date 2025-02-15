@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/15 13:41:49 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:03:27 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,15 @@
  * 3 2 1	c b a (V)
  * 1 3 2	a c b (V)
  */
-void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
+
+void	sort_three_numbers(t_list **stack_a)
 {
+	int a = (*stack_a)->next->next->content; // Last node: First number added 
+	int b = (*stack_a)->next->content;
+	int c = (*stack_a)->content; // Last number added
+	// ft_printf("a = (*stack_a)->next->next->content: %i\n", a);
+	// ft_printf("b = (*stack_b)->next->next->content: %i\n", b);
+	// ft_printf("c = (*stack_c)->next->next->content: %i\n", c);
 	if (a < b && a < c)
 	{
 		if (b < c)
@@ -48,7 +55,99 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
 		if (a > b)
 			sa(stack_a);
 	}
+	// int a2 = (*stack_a)->next->next->content; // Last node: First number added 
+	// int b2 = (*stack_a)->next->content;
+	// int c2 = (*stack_a)->content; // Last number added
+	// ft_printf("a = (*stack_a)->next->next->content: %i\n", a2);
+	// ft_printf("b = (*stack_b)->next->next->content: %i\n", b2);
+	// ft_printf("c = (*stack_c)->next->next->content: %i\n", c2);
 }
+
+// void	sort_three_numbers(t_list **stack_a)
+// {
+// 	int a = (*stack_a)->next->next->content; // Last node: First number added 
+// 	int b = (*stack_a)->next->content;
+// 	int c = (*stack_a)->content; // Last number added
+// 	if (a < b && a < c)
+// 	{
+// 		if (b < c)
+// 			return ;
+// 		if (b > c)
+// 			sa(stack_a);
+// 	}
+// 	if (b < a && b < c)
+// 	{
+// 		rra(stack_a);
+// 		if (a < c)
+// 			sa(stack_a);
+// 	}
+// 	if (c < a && c < b)
+// 	{
+// 		ra(stack_a);
+// 		if (a > b)
+// 			sa(stack_a);
+// 	}
+// }
+ 
+// void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
+// {
+// 	if (a < b && a < c)
+// 	{
+// 		if (b < c)
+// 			return ;
+// 		if (b > c)
+// 			sa(stack_a);
+// 	}
+// 	if (b < a && b < c)
+// 	{
+// 		rra(stack_a);
+// 		if (a < c)
+// 			sa(stack_a);
+// 	}
+// 	if (c < a && c < b)
+// 	{
+// 		ra(stack_a);
+// 		if (a > b)
+// 			sa(stack_a);
+// 	}
+// }
+
+// void	sort_three_numbers(t_list **stack_a)
+// {
+//     int	a = (*stack_a)->content;          // Top of the stack
+//     int	b = (*stack_a)->next->content;    // Second element
+//     int	c = (*stack_a)->next->next->content; // Third element
+
+//     // Case 1: [1, 2, 3] -> Already sorted
+//     if (a < b && b < c)
+//         return;
+
+//     // Case 2: [1, 3, 2] -> sa(), then ra()
+//     if (a < c && c < b)
+//     {
+//         sa(stack_a);  // Swap top two elements
+//         ra(stack_a);  // Rotate stack up
+//     }
+
+//     // Case 3: [2, 1, 3] -> sa()
+//     if (b < a && a < c)
+//         sa(stack_a);  // Swap top two elements
+
+//     // Case 4: [2, 3, 1] -> rra()
+//     if (c < a && a < b)
+//         rra(stack_a); // Rotate stack down
+
+//     // Case 5: [3, 1, 2] -> ra()
+//     if (b < c && c < a)
+//         ra(stack_a);  // Rotate stack up
+
+//     // Case 6: [3, 2, 1] -> sa(), then ra()
+//     if (c < b && b < a)
+//     {
+//         sa(stack_a);  // Swap top two elements
+//         ra(stack_a);  // Rotate stack up
+//     }
+// }
 
 /**
  * @brief: Sorts when stack size <= 3
@@ -56,9 +155,9 @@ void	sort_three_numbers(t_list **stack_a, int a, int b, int c)
  */
 void	sort_three_elements(t_list **stack_a, int size)
 {
-	int		a;
-	int		b;
-	int		c;
+	// int		a;
+	// int		b;
+	// int		c;
 
 	if (size == 1)
 		return ;
@@ -69,10 +168,11 @@ void	sort_three_elements(t_list **stack_a, int size)
 	}
 	else
 	{
-		a = (*stack_a)->next->next->content; // Last node: First number added 
-		b = (*stack_a)->next->content;
-		c = (*stack_a)->content; // Last number added
-		sort_three_numbers(stack_a, a, b, c);
+		// a = (*stack_a)->next->next->content; // Last node: First number added 
+		// b = (*stack_a)->next->content;
+		// c = (*stack_a)->content; // Last number added
+		// sort_three_numbers(stack_a, a, b, c);
+		sort_three_numbers(stack_a);
 	}
 }
 
