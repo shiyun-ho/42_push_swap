@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 23:36:55 by shiyun            #+#    #+#             */
-/*   Updated: 2024/06/09 19:25:27 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:40:34 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,34 +77,3 @@ char	*ft_itoa(int n)
 	}
 	return (NULL);
 }
-// #include <stdio.h>
-// #include <stdlib.h>
-// int main()
-// {
-
-//     printf("Testing normal values:\n");
-//     for (int i = 0; i < 10; i++)
-//     {
-//         printf("ft_itoa(%i) = (str)>>> %s\n", i, ft_itoa(i));
-//     }
-//     printf("Testing negative values:\n");
-//     for (int i = -1; i >-10; i--)
-//     {
-//         printf("ft_itoa(%i) = (str)>>> %s\n", i, ft_itoa(i));
-//     }
-//     printf("Testing other values:\n");
-//     for (int i = 2140; i < 2150; i++)
-//     {
-//         printf("ft_itoa(%i) = (str)>>> %s\n", i, ft_itoa(i));
-//     }
-//     printf("Testing other negative values:\n");
-//     for (int i = -1000; i >-1005; i--)
-//     {
-//         printf("ft_itoa(%i) = (str)>>> %s\n", i, ft_itoa(i));
-//     }
-//     printf("Testing big values:\n");
-//     // for (int i = 2147483645; i <= 2147483647; i++)
-//     // {
-//     //     printf("ft_itoa(%i) = (in str) %s\n", i, ft_itoa(i));
-//     // }
-// }

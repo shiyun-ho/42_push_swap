@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 08:56:42 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/06 20:42:06 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:32:37 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	ra(t_list **stack_a)
 	int		size;
 	t_list	*temporary_node;
 	t_list	*last_node;
-	// TODO: Remove later - checker function
-	t_list	*current;
 
 	size = ft_lstsize(*stack_a);
 	if (size <= 1 || *stack_a == NULL || (*stack_a)->next == NULL)
@@ -40,15 +38,6 @@ void	ra(t_list **stack_a)
 	last_node->next = temporary_node;
 	temporary_node->next = NULL;
 
-	// TODO: Remove later - checker function
-	ft_printf(">>>ra\n");
-	current = *stack_a;
-    while (current)
-    {
-		ft_printf("\n");
-        ft_printf("%i\n", current->content);
-        current = current->next;
-    }
-	ft_printf("\n");
+	ft_printf("ra\n");
 }
 

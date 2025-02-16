@@ -137,5 +137,36 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   - Bug: Issues with pushing elements off stack
     - Found issues with pushing elements off the stack as my order of deassociationg was wrong
   - Bug: Issues with actions of swapping elements based on position after refactoring
-        
----
+  - Bug: 
+  ```
+  ARG="2 3 1"; ./push_swap $ARG | ./checker_linux $ARG
+    KO
+  ARG="6 8 1"; ./push_swap $ARG | ./checker_linux $ARG
+    KO
+  ARG="3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
+    OK
+  ARG="3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
+    OK
+  ARG="1 7 8"; ./push_swap $ARG | ./checker_linux $ARG
+    OK
+  ``
+  - Bug: 
+  ```
+   ~/Documents/circle 2/42_push_swap  on v2_fix !3 ?65  ARG="1 2" | ./push_swap $ARG
+      Counted no in quoted arg: 4
+      Size: 3
+      Before sort...
+      >>> stack_a:
+      2
+      3
+      1
+      rra
+
+    ~/Documents/circle 2/42_push_swap  on v2_fix !3 ?65  ./push_swap " 1 2"          
+      Counted no in quoted arg: 3
+      Size: 2
+      Before sort...
+      >>> stack_a:
+      1
+      2
+  ```

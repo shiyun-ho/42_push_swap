@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:28:37 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/12 20:27:03 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:03:21 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 		new_node = ft_lstnew((int)num);
 		if (!new_node)
 			handle_error(*array, head);
-		ft_lstadd_front(head, new_node);
+		// ft_lstadd_front(head, new_node);
+		ft_lstadd_back(head, new_node);
 		if (!validate_input(num, argv[i], *array, i))
 			handle_error(*array, head);
 		i++;

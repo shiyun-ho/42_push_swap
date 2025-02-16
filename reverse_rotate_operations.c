@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 20:04:51 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/06 20:42:01 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:31:58 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,5 @@ void	rra(t_list **stack_a)
 	*stack_a = last_node;
 	(*stack_a)->next = temporary_node;
 	second_last_node->next = NULL;
-	ft_printf(">>>rra\n");
-
-	// TODO: Remove later - checker function
-	t_list  *current = *stack_a;
-    while (current)
-    {
-        ft_printf("%i\n", current->content);
-        current = current->next;
-    }
+	ft_printf("rra\n");
 }

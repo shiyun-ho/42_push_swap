@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/06 20:36:59 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/15 14:32:35 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "./libft/libft.h"
+
+// Parsing processing utils
+char	**handle_string_input(char *arg);
+int		count_no_in_array(char **array);
+int		count_no_in_quoted_arg(char *argv[]);
+char	**process_quoted_arg(int *argc, char ***argv);
 
 // Argument checking utils
 int		handle_error(int *array, t_list **node);
@@ -34,7 +40,8 @@ void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
 
 // Sort utils
-void	sort_three_numbers(t_list **stack_a, int a, int b, int c);
+// void	sort_three_numbers(t_list **stack_a, int a, int b, int c);
+void	sort_three_numbers(t_list **stack_a);
 void	sort_three_elements(t_list **stack_a, int size);
 int		find_position_of_largest(t_list *first_node);
 void	shift_top(t_list **stack_a, t_list **stack_b, int position, int size);
@@ -47,8 +54,6 @@ t_list	*quick_sort(t_list **head_ref);
 
 // Stack utils
 t_list	*reverse_stack(t_list *head);
-void	print_all_nodes(t_list *node);
-void	print_all_nodes_by_rank(t_list *node);
 
 // Radis sort utils
 int		bits_for_highest_rank(int rank);
