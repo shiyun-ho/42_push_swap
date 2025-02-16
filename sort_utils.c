@@ -28,7 +28,7 @@ void	sort_three_numbers(t_list **stack_a)
 	a = (*stack_a)->content;
 	b = (*stack_a)->next->content;
 	c = (*stack_a)->next->next->content;
-    if (a < b && b < c)
+    if (a < b && b < c) //123
         return;
     if (a < c && c < b) //132
     {
@@ -44,7 +44,7 @@ void	sort_three_numbers(t_list **stack_a)
     if (c < b && b < a) //321
     {
         sa(stack_a);
-        ra(stack_a);
+        rra(stack_a);
     }
 }
 
