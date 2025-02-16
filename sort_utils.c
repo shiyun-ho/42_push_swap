@@ -71,32 +71,32 @@ void	sort_three_elements(t_list **stack_a, int size)
  * @brief: Find position of largest node in linked list
  * @returns: An integer on position
  */
-int		find_position_of_largest(t_list *first_node)
+ int		find_position_of_smallest(t_list *first_node)
 {
 	t_list	*temp_node;
-	t_list	*largest_node;
+	t_list	*smallest_node;
 	int		current_position;
-	int		biggest_position;
+	int		smallest_position;
 
 	current_position = 0;
-	biggest_position = 0;
+	smallest_position = 0;
 	temp_node = first_node;
-	largest_node = first_node;
+	smallest_node = first_node;
 	while (temp_node != NULL)
 	{
-		if (temp_node->content > largest_node->content)
+		if (temp_node->content < smallest_node->content)
 		{
-			biggest_position = current_position;
-			largest_node = temp_node;
+			smallest_position = current_position;
+			smallest_node = temp_node;
 		}
 		temp_node = temp_node->next;
 		current_position++;
 	}
-	return (biggest_position);
+	return (smallest_position);
 }
 
 /**
- * @brief: Shifts largest element to top of stack and pushes it to another stack
+ * @brief: Shifts smallest element to top of stack and pushes it to another stack
  * @param: stack_a, stack_b, position (largest position), size
  */
 void	shift_top(t_list **stack_a, t_list **stack_b, int position, int size)
@@ -123,19 +123,19 @@ void	shift_top(t_list **stack_a, t_list **stack_b, int position, int size)
  * @brief: Sorts when stack size <=5
  * @param: pointer to pointer of first node on top of stack
  */
-void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
+ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 {
-	int		largest_position;
-	int		second_largest_position;
+	int		smallest_position;
+	int		second_smallest_position;
 
-	largest_position = find_position_of_largest(*stack_a);
-	ft_printf("Position of largest node: %i\n", largest_position);
-	shift_top(stack_a, stack_b, largest_position, size);
+	smallest_position = find_position_of_smallest(*stack_a);
+	// ft_printf("Position of smallest node: %i\n", smallest_position);
+	shift_top(stack_a, stack_b, smallest_position, size);
 	if (size == 5)
 	{
-		second_largest_position = find_position_of_largest(*stack_a);
-		ft_printf("Position of second largest node: %i\n", second_largest_position);
-		shift_top(stack_a, stack_b, second_largest_position, size);
+		second_smallest_position = find_position_of_smallest(*stack_a);
+		// ft_printf("Position of second smallest node: %i\n", second_smallest_position);
+		shift_top(stack_a, stack_b, second_smallest_position, size);
 	}
 	sort_three_elements(stack_a, 3);
 	while (*stack_b)
