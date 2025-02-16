@@ -59,20 +59,20 @@ void    sort_stack(t_list **stack_a)
 	}
 	
 	// TODO: REMOVE LATER
-	// ft_printf("\n\nCompleted sort...\n");
-	// ft_printf(">>> stack_a:\n");
-	// t_list *current_a = *stack_a;
-	// while (current_a)
-	// {
-	// 	ft_printf("%i\n", current_a->content);
-	// 	current_a = current_a->next;
-	// }
+	ft_printf("\n\nCompleted sort...\n");
+	ft_printf(">>> stack_a:\n");
+	t_list *current_a = *stack_a;
+	while (current_a)
+	{
+		ft_printf("%i\n", current_a->content);
+		current_a = current_a->next;
+	}
 
-	// ft_printf(">>> stack_b:\n");
-	// t_list *current_b = stack_b;
-	// while (current_b)
-	// {
-	// 	ft_printf("%i\n", current_b->content);
-	// 	current_b = current_b->next;
-	// }
+	ft_printf(">>> stack_b:\n");
+	t_list *current_b = stack_b;
+	while (current_b)
+	{
+		ft_printf("%i\n", current_b->content);
+		current_b = current_b->next;
+	}
 }

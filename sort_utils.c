@@ -58,7 +58,6 @@ void	sort_three_elements(t_list **stack_a, int size)
 		return ;
 	else if (size == 2)
 	{
-		ft_printf("Entered size = 2");
 		if ((*stack_a)->content > (*stack_a)->next->content)
 			sa(stack_a);
 	}
@@ -130,10 +129,12 @@ void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 	int		second_largest_position;
 
 	largest_position = find_position_of_largest(*stack_a);
+	ft_printf("Position of largest node: %i\n", largest_position);
 	shift_top(stack_a, stack_b, largest_position, size);
 	if (size == 5)
 	{
 		second_largest_position = find_position_of_largest(*stack_a);
+		ft_printf("Position of second largest node: %i\n", second_largest_position);
 		shift_top(stack_a, stack_b, second_largest_position, size);
 	}
 	sort_three_elements(stack_a, 3);
