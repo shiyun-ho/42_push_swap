@@ -170,3 +170,6 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
       1
       2
   ```
+  - Bug: Original stack in stack_a was modified during quick sort
+    - Will need to make a copy of the stack for quick sort
+    - Assign the new rank to the original stack_a 
