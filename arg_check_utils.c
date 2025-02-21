@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./libft/libft.h"
-# include "push_swap.h"
-# include <limits.h>
-# include <stdlib.h>
+#include "./libft/libft.h"
+#include "push_swap.h"
+#include <limits.h>
+#include <stdlib.h>
 
-int		handle_error(int *array, t_list **node)
+int	handle_error(int *array, t_list **node)
 {
 	ft_printf("Error\n");
 	if (array)
@@ -25,7 +25,7 @@ int		handle_error(int *array, t_list **node)
 	exit(EXIT_FAILURE);
 }
 
-int		has_duplicate(int *array, int size)
+int	has_duplicate(int *array, int size)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ int		has_duplicate(int *array, int size)
 	return (0);
 }
 
-int		validate_input(long num, char *arg, int *array, int index)
+int	validate_input(long num, char *arg, int *array, int index)
 {
 	if (num == 0 && (arg[0] != '0' || arg[1] != '\0'))
 		return (0);
@@ -48,7 +48,7 @@ int		validate_input(long num, char *arg, int *array, int index)
 	return (1);
 }
 
-int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
+int	create_linked_list(int argc, char *argv[], int **array, t_list **head)
 {
 	int		i;
 	long	num;
@@ -68,7 +68,6 @@ int		create_linked_list(int argc, char *argv[], int **array, t_list **head)
 		new_node = ft_lstnew((int)num);
 		if (!new_node)
 			handle_error(*array, head);
-		// ft_lstadd_front(head, new_node);
 		ft_lstadd_back(head, new_node);
 		if (!validate_input(num, argv[i], *array, i))
 			handle_error(*array, head);

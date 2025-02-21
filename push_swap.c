@@ -30,7 +30,7 @@ void	free_split_args(char **args)
 	free(args[i]);
 }
 
-static void		handle_arguments(int argc, char **argv)
+static void	handle_arguments(int argc, char **argv)
 {
 	int		i;
 
@@ -42,7 +42,7 @@ static void		handle_arguments(int argc, char **argv)
 	}
 }
 
-static void		create_and_sort_linked_list(int argc, char **argv)
+static void	create_and_sort_linked_list(int argc, char **argv)
 {
 	int		*duplicate_check_array;
 	t_list	*head;

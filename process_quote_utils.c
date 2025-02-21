@@ -35,7 +35,7 @@ int	count_no_in_array(char **array)
 	return (i);
 }
 
-int		count_no_in_quoted_arg(char *argv[])
+int	count_no_in_quoted_arg(char *argv[])
 {
 	int		split_count;
 	char	**args_array;
@@ -45,7 +45,6 @@ int		count_no_in_quoted_arg(char *argv[])
 	split_count = count_no_in_array(args_array);
 	free(args_array);
 	total_no = split_count;
-	// ft_printf("Counted no in quoted arg: %i\n", total_no);
 	return (total_no);
 }
 
@@ -58,10 +57,8 @@ char	**process_quoted_arg(int *argc, char ***argv)
 
 	args_array = handle_string_input((*argv)[1]);
 	split_count = count_no_in_array(args_array);
-
 	new_argv = (char **)malloc((split_count + 2) * sizeof(char *));
 	new_argv[0] = (*argv)[0];
-
 	i = 0;
 	while (i < split_count)
 	{
@@ -69,10 +66,8 @@ char	**process_quoted_arg(int *argc, char ***argv)
 		i++;
 	}
 	new_argv[split_count + 1] = NULL;
-
 	*argc = split_count + 1;
 	*argv = new_argv;
 	free(args_array);
-
 	return (new_argv);
 }

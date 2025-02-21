@@ -18,7 +18,7 @@
 	@returns: Value in bits form
 	@reason: Number of iterations & comparisons for radix sort
  */
-int		bits_for_highest_rank(int rank)
+int	bits_for_highest_rank(int rank)
 {
 	int		num_bits;
 
@@ -28,36 +28,34 @@ int		bits_for_highest_rank(int rank)
 		num_bits++;
 		rank >>= 1;
 	}
-
 	return (num_bits);
 }
 
-void radix_sort(t_list **stack_a, t_list **stack_b, int size)
+void	radix_sort(t_list **stack_a, t_list **stack_b, int size)
 {
-    int num_bits;
-    int bit;
-    int i;
-    int rank;
+	int	num_bits;
+	int	bit;
+	int	i;
+	int	rank;
 
-    num_bits = bits_for_highest_rank(size - 1);
-    bit = 0;
-    while (bit < num_bits)
-    {
-        i = 0;
-        while (i < size)
-        {
+	num_bits = bits_for_highest_rank(size - 1);
+	bit = 0;
+	while (bit < num_bits)
+	{
+		i = 0;
+		while (i < size)
+		{
 			rank = (*stack_a)->rank;
-            if ((rank & (1 << bit)) == 0)
-                pb(stack_a, stack_b);
-            else
-                ra(stack_a);
-            i++;
-        }
-        while (*stack_b)
-        {
-            pa(stack_a, stack_b);
-        }
-        bit++;
-    }
+			if ((rank & (1 << bit)) == 0)
+				pb(stack_a, stack_b);
+			else
+				ra(stack_a);
+			i++;
+		}
+		while (*stack_b)
+		{
+			pa(stack_a, stack_b);
+		}
+		bit++;
+	}
 }
-

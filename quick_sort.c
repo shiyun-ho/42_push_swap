@@ -56,12 +56,9 @@ t_list	*combine_sublists(t_list *pivot, t_list *lt_list, t_list *gt_list)
 	t_list	*sorted_lt_tail;
 
 	pivot->next = gt_list;
-
 	sorted_gt_tail = pivot;
-
 	while (sorted_gt_tail && sorted_gt_tail->next)
 		sorted_gt_tail = sorted_gt_tail->next;
-
 	if (lt_list != NULL)
 	{
 		sorted_lt_tail = lt_list;
@@ -70,7 +67,6 @@ t_list	*combine_sublists(t_list *pivot, t_list *lt_list, t_list *gt_list)
 		sorted_lt_tail->next = pivot;
 		return (lt_list);
 	}
-
 	return (pivot);
 }
 

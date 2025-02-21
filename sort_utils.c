@@ -21,31 +21,31 @@
  */
 void	sort_three_numbers(t_list **stack_a)
 {
-	int a;
-	int b;
-	int c;
-	
+	int	a;
+	int	b;
+	int	c;
+
 	a = (*stack_a)->content;
 	b = (*stack_a)->next->content;
 	c = (*stack_a)->next->next->content;
-    if (a < b && b < c) //123
-        return;
-    if (a < c && c < b) //132
-    {
-        sa(stack_a);
-        ra(stack_a);
-    }
-    if (b < a && a < c) //213 
-        sa(stack_a);
-    if (c < a && a < b) //231
-        rra(stack_a);
-    if (b < c && c < a) //312
-        ra(stack_a);
-    if (c < b && b < a) //321
-    {
-        sa(stack_a);
-        rra(stack_a);
-    }
+	if (a < b && b < c)
+		return ;
+	if (a < c && c < b)
+	{
+		sa(stack_a);
+		ra(stack_a);
+	}
+	if (b < a && a < c)
+		sa(stack_a);
+	if (c < a && a < b)
+		rra(stack_a);
+	if (b < c && c < a)
+		ra(stack_a);
+	if (c < b && b < a)
+	{
+		sa(stack_a);
+		rra(stack_a);
+	}
 }
 
 /**
@@ -71,7 +71,7 @@ void	sort_three_elements(t_list **stack_a, int size)
  * @brief: Find position of largest node in linked list
  * @returns: An integer on position
  */
- int		find_position_of_smallest(t_list *first_node)
+int	find_position_of_smallest(t_list *first_node)
 {
 	t_list	*temp_node;
 	t_list	*smallest_node;
@@ -123,18 +123,16 @@ void	shift_top(t_list **stack_a, t_list **stack_b, int position, int size)
  * @brief: Sorts when stack size <=5
  * @param: pointer to pointer of first node on top of stack
  */
- void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
+void	sort_five_elements(t_list **stack_a, t_list **stack_b, int size)
 {
 	int		smallest_position;
 	int		second_smallest_position;
 
 	smallest_position = find_position_of_smallest(*stack_a);
-	// ft_printf("Position of smallest node: %i\n", smallest_position);
 	shift_top(stack_a, stack_b, smallest_position, size);
 	if (size == 5)
 	{
 		second_smallest_position = find_position_of_smallest(*stack_a);
-		// ft_printf("Position of second smallest node: %i\n", second_smallest_position);
 		shift_top(stack_a, stack_b, second_smallest_position, size);
 	}
 	sort_three_elements(stack_a, 3);

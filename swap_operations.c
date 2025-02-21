@@ -26,11 +26,8 @@ void	sa(t_list **stack_a)
 	if (size <= 1 || *stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
 	temporary_node = *stack_a;
-	//update top of stack to point to second node
 	*stack_a = (*stack_a)->next;
-	//make original top node to point to third node
 	temporary_node->next = (*stack_a)->next;
-	//make new top node point to original top node
 	(*stack_a)->next = temporary_node;
 	ft_printf("sa\n");
 }

@@ -10,25 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./libft/libft.h"
+#include "./libft/libft.h"
 
 /**
  * @brief: Pushes the top element from stack_b to stack_a
  * @param: Pointer to the pointer of the top element of stack_a
  * @param: Pointer to the pointer of the top element of stack_b
  */
-void    pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-    t_list  *top_node;
+	t_list	*top_node;
 
-    if (!(*stack_b))
-        return ;
-    top_node = *stack_b;
-    *stack_b = (*stack_b)->next;
-    top_node->next = *stack_a;
-    *stack_a = top_node;
-
-    ft_printf("pa\n");
+	if (!(*stack_b))
+		return ;
+	top_node = *stack_b;
+	*stack_b = (*stack_b)->next;
+	top_node->next = *stack_a;
+	*stack_a = top_node;
+	ft_printf("pa\n");
 }
 
 /**
@@ -36,16 +35,15 @@ void    pa(t_list **stack_a, t_list **stack_b)
  * @param: Pointer to the pointer of the top element of stack_a
  * @param: Pointer to the pointer of the top element of stack_b
  */
-void    pb(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
-    t_list  *top_node;
+	t_list	*top_node;
 
-    if (!(*stack_a))
-        return ;
-    top_node = *stack_a;
-    *stack_a = (*stack_a)->next;
-    top_node->next = *stack_b;
-    *stack_b = top_node;
-
-    ft_printf("pb\n");
+	if (!(*stack_a))
+		return ;
+	top_node = *stack_a;
+	*stack_a = (*stack_a)->next;
+	top_node->next = *stack_b;
+	*stack_b = top_node;
+	ft_printf("pb\n");
 }

@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-int		is_sorted(t_list *stack_a)
+int	is_sorted(t_list *stack_a)
 {
 	t_list	*current;
 
@@ -34,7 +34,7 @@ t_list	*copy_stack(t_list *head)
 	t_list	*node;
 
 	new_head = NULL;
-	current = head;	
+	current = head;
 	while (current)
 	{
 		node = malloc(sizeof(t_list));
@@ -68,11 +68,11 @@ void	assign_ranks(t_list *stack, t_list *sorted_copy)
 			if (sorted_node->content == current->content)
 			{
 				current->rank = index;
-				break;
+				break ;
 			}
 			sorted_node = sorted_node->next;
 			index++;
-		}				
+		}
 		current = current->next;
 	}
 }
@@ -81,11 +81,11 @@ void	assign_ranks(t_list *stack, t_list *sorted_copy)
  * @brief: Sorts stack from user input
  * @param: `stack_a` - Stack generated from user inputs
  */
-void    sort_stack(t_list **stack_a)
+void	sort_stack(t_list **stack_a)
 {
 	int		size;
 	t_list	*stack_b;
-	t_list	*copy; 
+	t_list	*copy;
 
 	stack_b = NULL;
 	size = ft_lstsize(*stack_a);
@@ -95,7 +95,7 @@ void    sort_stack(t_list **stack_a)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
 		sort_five_elements(stack_a, &stack_b, size);
-	else 
+	else
 	{
 		copy = copy_stack(*stack_a);
 		if (!copy)

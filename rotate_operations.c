@@ -26,18 +26,12 @@ void	ra(t_list **stack_a)
 	size = ft_lstsize(*stack_a);
 	if (size <= 1 || *stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
-	// Save the top node
 	temporary_node = *stack_a;
-	// Update top node to be the second node
 	*stack_a = (*stack_a)->next;
-	// Traverse to bottom of the stack
 	last_node = *stack_a;
 	while (last_node->next)
 		last_node = last_node->next;
-	// Reconnect top node to the bottom node
 	last_node->next = temporary_node;
 	temporary_node->next = NULL;
-
 	ft_printf("ra\n");
 }
-
