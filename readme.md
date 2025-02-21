@@ -173,3 +173,5 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
   - Bug: Original stack in stack_a was modified during quick sort
     - Will need to make a copy of the stack for quick sort
     - Assign the new rank to the original stack_a 
+    - Resolved by copying new stack, and assigning new ranks to stack_a by assigning ranks from new stack to old
+    
