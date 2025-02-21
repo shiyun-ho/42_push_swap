@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 /**
@@ -20,21 +19,20 @@
  * @param: Address of pointer to an element
  * @param: Address of function used to delete the content of the element
 */
-void ft_lstclear(t_list **lst, void (*del)(int))
+void	ft_lstclear(t_list **lst, void (*del)(int))
 {
-    t_list  *current_node;
-    t_list  *next_node;
-    
-    if (!lst || !del)
-        return ;
+	t_list	*current_node;
+	t_list	*next_node;
 
-    current_node = *lst;
-    while(current_node)
-    {
-        next_node = current_node->next;
-        (*del)(current_node->content);
-        free(current_node);
-        current_node = next_node;
-    }
-    *lst = NULL;
+	if (!lst || !del)
+		return ;
+	current_node = *lst;
+	while (current_node)
+	{
+		next_node = current_node->next;
+		(*del)(current_node->content);
+		free(current_node);
+		current_node = next_node;
+	}
+	*lst = NULL;
 }

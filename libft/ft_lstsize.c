@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 /**
  * @brief: Count the number of nodes in a list
  * @param: lst - beginning of the list
  * @return: length of the list
  */
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int		i;
+	int	i;
 
 	i = 0;
 	while (lst)

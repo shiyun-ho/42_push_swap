@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void del_int(int content)
+void	del_int(int content)
 {
 	(void)content;
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 /**
  * @brief: Adds the node 'new' at beginning of the list
@@ -21,9 +21,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new_node)
 {
 	if (!new_node)
 		return ;
-	// memory address of the next of NEW node is now head of the list
-		// NEW, NEW(next): LST
 	new_node->next = *lst;
-	//	head / first node of linked list = memory address of NEW_node
 	*lst = new_node;
 }
