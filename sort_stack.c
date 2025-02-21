@@ -27,58 +27,68 @@ int		is_sorted(t_list *stack_a)
 	return (1);
 }
 
+t_list	*copy_stack(t_list *head)
+{
+	t_list	*new_head;
+	t_list	*current;
+	t_list	*node;
+
+	new_head = NULL;
+	current = head;	
+	while (current)
+	{
+		node = malloc(sizeof(t_list));
+		if (!node)
+		{
+			ft_lstclear(&new_head, del_int);
+			exit(EXIT_FAILURE);
+		}
+		node->content = current->content;
+		node->rank = 0;
+		node->next = new_head;
+		new_head = node;
+		current = current->next;
+	}
+	return (new_head);
+}
+
+void	assign_ranks(t_list *stack, t_list *sorted_copy)
+{
+	t_list	*current;
+	t_list	*sorted_node;
+	int		index;
+
+	current = stack;
+	while (current)
+	{
+		sorted_node = sorted_copy;
+		index = 0;
+		while (sorted_node)
+		{
+			if (sorted_node->content == current->content)
+			{
+				current->rank = index;
+				break;
+			}
+			sorted_node = sorted_node->next;
+			index++;
+		}				
+		current = current->next;
+	}
+}
+
 /**
  * @brief: Sorts stack from user input
  * @param: `stack_a` - Stack generated from user inputs
  */
-// void    sort_stack(t_list **stack_a)
-// {
-// 	int		size;
-// 	t_list	*stack_b;
-
-// 	stack_b = NULL;
-// 	size = ft_lstsize(*stack_a);
-// 	if (is_sorted(*stack_a))
-// 		return ;
-// 	if (size <= 3)
-// 		sort_three_elements(stack_a, size);
-// 	else if (size <= 5)
-// 		sort_five_elements(stack_a, &stack_b, size);
-// 	else 
-// 	{
-// 		quick_sort(stack_a);
-// 		radix_sort(stack_a, &stack_b, size);
-// 	}
-// }
-
-
 void    sort_stack(t_list **stack_a)
 {
 	int		size;
 	t_list	*stack_b;
+	t_list	*copy; 
 
 	stack_b = NULL;
 	size = ft_lstsize(*stack_a);
-	
-	// TODO: REMOVE LATER
-	ft_printf("Size: %i\n", size);
-	ft_printf("Before sort...\n");
-
-	ft_printf(">>> stack_a:\n");
-	t_list *org_a = *stack_a;
-	while (org_a)
-	{
-		ft_printf("%i\n", org_a->content);
-		org_a = org_a->next;
-	}
-
-	ft_printf(">>> stack_b:\n");
-	t_list *org_b = stack_b;
-	while (org_b)
-	{
-		ft_printf("%i\n", org_b->content);
-		org_b = org_b->next;
-	}
 	if (is_sorted(*stack_a))
 		return ;
 	if (size <= 3)
@@ -87,25 +97,12 @@ void    sort_stack(t_list **stack_a)
 		sort_five_elements(stack_a, &stack_b, size);
 	else 
 	{
-		quick_sort(stack_a);
+		copy = copy_stack(*stack_a);
+		if (!copy)
+			return ;
+		quick_sort(&copy);
+		assign_ranks(*stack_a, copy);
+		ft_lstclear(&copy, del_int);
 		radix_sort(stack_a, &stack_b, size);
-	}
-	
-	// TODO: REMOVE LATER
-	ft_printf("\n\nCompleted sort...\n");
-	ft_printf(">>> stack_a:\n");
-	t_list *current_a = *stack_a;
-	while (current_a)
-	{
-		ft_printf("%i\n", current_a->content);
-		current_a = current_a->next;
-	}
-
-	ft_printf(">>> stack_b:\n");
-	t_list *current_b = stack_b;
-	while (current_b)
-	{
-		ft_printf("%i\n", current_b->content);
-		current_b = current_b->next;
 	}
 }
