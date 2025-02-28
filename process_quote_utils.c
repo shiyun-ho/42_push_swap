@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:52:39 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/28 22:19:53 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/02/28 22:24:14 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ int		digit_check(int argc, char ***argv)
 	int		j;
 
 	i = 1;
-	while (i <= argc)
+	while (i < argc)
 	{
 		j = 0;
-		while (argv[i][j])
+		if ((*argv)[i][0] == '\0')
+			return (0);
+		while ((*argv)[i][j])
 		{
 			if (ft_isdigit(argv[i][j]) == 0)
 				return (0);
