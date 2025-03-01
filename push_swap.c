@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/01 11:20:46 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/01 20:21:39 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	head = NULL;
 	if (!create_linked_list(argc, argv, &duplicate_check_array, &head))
 	{
+		free(argv);
 		handle_error(duplicate_check_array, &head);
-		exit(EXIT_FAILURE);
+		// exit(EXIT_FAILURE);
 	}
 	sort_stack(&head);
 	ft_lstclear(&head, del_int);
 	free(duplicate_check_array);
+	// TRY
+	// free(argv);
 }
 
 int	main(int argc, char *argv[])
@@ -72,5 +75,6 @@ int	main(int argc, char *argv[])
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
+	
 	return (1);
 }

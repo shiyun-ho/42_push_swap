@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:52:39 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/01 11:22:32 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/01 20:58:12 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ char	**handle_string_input(char *arg)
 
 	args_array = ft_split(arg, ' ');
 	if (!args_array)
+	{
 		handle_error(NULL, NULL);
+	}
 	return (args_array);
 }
 
@@ -42,6 +44,11 @@ int	count_no_in_quoted_arg(char *argv[])
 	int		total_no;
 
 	args_array = handle_string_input(argv[1]);
+	if (!args_array)
+	{
+		free(args_array);
+		exit(EXIT_FAILURE);
+	}
 	split_count = count_no_in_array(args_array);
 	free(args_array);
 	total_no = split_count;
@@ -50,28 +57,54 @@ int	count_no_in_quoted_arg(char *argv[])
 	return (total_no);
 }
 
-void	digit_check(int argc, char ***argv)
-{
-	int		i;
-	int		j;
+// void	digit_check(int argc, char ***argv)
+// {
+// 	int		i;
+// 	int		j;
 
-	i = 1;
-	while (i <= argc)
-	{
-		j = 0;
-		if ((*argv)[i][0] == '\0')
-			handle_error(NULL, NULL);
-		if (((*argv)[i][j] == '+' || (*argv)[i][j] == '-'))
-			j++;
-		while ((*argv)[i][j])
-		{
-			if (ft_isdigit((*argv)[i][j]) == 0)
-				handle_error(NULL, NULL);
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 1;
+// 	while (i <= argc)
+// 	{
+// 		j = 0;
+// 		if ((*argv)[i][0] == '\0')
+// 			handle_error(NULL, NULL);
+// 		if (((*argv)[i][j] == '+' || (*argv)[i][j] == '-'))
+// 			j++;
+// 		while ((*argv)[i][j])
+// 		{
+// 			if (ft_isdigit((*argv)[i][j]) == 0)
+// 				handle_error(NULL, NULL);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// void	digit_check(int argc, char ***argv)
+// {
+// 	int		i;
+// 	// int		j;
+// 	// int		num;
+
+// 	i = 1;
+// 	if (argc == 2)
+// 	{
+// 		// Split argc[1] into individual argc
+// 	}
+// 	else
+// 	{
+// 		while (i <= argc)
+// 		{
+// 			// Check if atoi is successful
+// 			if (ft_atoi((*argv)[i]))
+// 				i++;
+// 			else
+// 				handle_error(NULL, NULL);
+// 		}
+// 	}
+// }
+
+
 
 /**
 	***argv = pointer to group of str 
@@ -85,20 +118,39 @@ char	**process_quoted_arg(int *argc, char ***argv)
 	int		split_count;
 	int		i;
 
-	digit_check(*argc, argv);
+	// digit_check(*argc, argv);
 	args_array = handle_string_input((*argv)[1]);
+	if (!args_array)
+		handle_error(NULL, NULL);
 	split_count = count_no_in_array(args_array);
 	new_argv = (char **)malloc((split_count + 2) * sizeof(char *));
+	if (!new_argv)
+	{
+		free(args_array);
+		ft_printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
 	new_argv[0] = (*argv)[0];
 	i = 0;
 	while (i < split_count)
 	{
+		if (!ft_atoi(args_array[i]))
+		{
+			// if (new_argv)
+			// 	free(new_argv);
+			free(new_argv);
+			free(args_array);
+			ft_printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
 		new_argv[i + 1] = args_array[i];
 		i++;
 	}
 	new_argv[split_count + 1] = NULL;
+	
 	*argc = split_count + 1;
 	*argv = new_argv;
+	
 	free(args_array);
 	return (new_argv);
 }
