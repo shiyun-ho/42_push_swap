@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:28:37 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/12 22:03:21 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:22:47 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,7 @@ void	check_valid_argument(char *arg)
 				return ;
 		}
 		else
-		{
-			ft_printf("Error: Not valid int argument\n");
-			exit(EXIT_FAILURE);
-		}
+			handle_error(NULL, NULL);
 		j++;
 	}
 }

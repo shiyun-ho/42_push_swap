@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:52:39 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/02/28 22:24:14 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:22:32 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,32 @@ int	count_no_in_quoted_arg(char *argv[])
 	split_count = count_no_in_array(args_array);
 	free(args_array);
 	total_no = split_count;
+	if (argv[1] && argv[1][0] != '\0' && split_count == 0)
+		total_no = 1;
 	return (total_no);
 }
 
-int		digit_check(int argc, char ***argv)
+void	digit_check(int argc, char ***argv)
 {
 	int		i;
 	int		j;
 
 	i = 1;
-	while (i < argc)
+	while (i <= argc)
 	{
 		j = 0;
 		if ((*argv)[i][0] == '\0')
-			return (0);
+			handle_error(NULL, NULL);
+		if (((*argv)[i][j] == '+' || (*argv)[i][j] == '-'))
+			j++;
 		while ((*argv)[i][j])
 		{
-			if (ft_isdigit(argv[i][j]) == 0)
-				return (0);
+			if (ft_isdigit((*argv)[i][j]) == 0)
+				handle_error(NULL, NULL);
 			j++;
 		}
 		i++;
 	}
-	return (1);
 }
 
 /**
@@ -81,10 +84,8 @@ char	**process_quoted_arg(int *argc, char ***argv)
 	char	**new_argv;
 	int		split_count;
 	int		i;
-	int		digit_check;
 
-	if (digit_check(argc, argv) == 0)
-		handle_error(NULL, NULL);
+	digit_check(*argc, argv);
 	args_array = handle_string_input((*argv)[1]);
 	split_count = count_no_in_array(args_array);
 	new_argv = (char **)malloc((split_count + 2) * sizeof(char *));
