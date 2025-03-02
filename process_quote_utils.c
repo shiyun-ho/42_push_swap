@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:52:39 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/01 11:22:32 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:02:36 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,6 @@ int	count_no_in_quoted_arg(char *argv[])
 	return (total_no);
 }
 
-void	digit_check(int argc, char ***argv)
-{
-	int		i;
-	int		j;
-
-	i = 1;
-	while (i <= argc)
-	{
-		j = 0;
-		if ((*argv)[i][0] == '\0')
-			handle_error(NULL, NULL);
-		if (((*argv)[i][j] == '+' || (*argv)[i][j] == '-'))
-			j++;
-		while ((*argv)[i][j])
-		{
-			if (ft_isdigit((*argv)[i][j]) == 0)
-				handle_error(NULL, NULL);
-			j++;
-		}
-		i++;
-	}
-}
-
 /**
 	***argv = pointer to group of str 
 	char **argv = group of str
@@ -85,7 +62,6 @@ char	**process_quoted_arg(int *argc, char ***argv)
 	int		split_count;
 	int		i;
 
-	digit_check(*argc, argv);
 	args_array = handle_string_input((*argv)[1]);
 	split_count = count_no_in_array(args_array);
 	new_argv = (char **)malloc((split_count + 2) * sizeof(char *));

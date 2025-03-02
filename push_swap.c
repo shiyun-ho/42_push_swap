@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/01 11:20:46 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:12:20 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,56 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	free(duplicate_check_array);
 }
 
+// validity check
+void	check_if_valid(char ***argv)
+{
+	int		digit_checker;
+	int		j;
+
+	j = 0;
+	digit_checker = 0;
+	if ((*argv)[1][0] == '\0')
+		handle_error(NULL, NULL);
+	if (((*argv)[1][j] == '+' || (*argv)[1][j] == '-'))
+		j++;
+	while ((*argv)[1][j])
+	{
+		if (digit_checker > 0)
+		{
+			if ((*argv)[1][j] == '+' || (*argv)[1][j] == '-')
+				handle_error(NULL, NULL);
+		}
+		if (ft_isdigit((*argv)[1][j]) == 0)
+			handle_error(NULL, NULL);
+		if (ft_isdigit((*argv)[1][j] == 1))
+			digit_checker++;
+		j++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
+	int		j;
+
 	if (argc == 1)
 		return (0);
-	if (argc >= 2 && ft_strchr(argv[1], ' ') != NULL)
+	if (argc == 2)
 	{
-		// ft_printf("argc after compiling prog: %i\n", argc);
-		argc = count_no_in_quoted_arg(argv);
-		// ft_printf("argc after counting prog: %i\n", argc);
-		argv = process_quoted_arg(&argc, &argv);
+		if (ft_strchr(argv[1], ' ') != NULL)
+		{
+			check_if_valid(&argv);
+			argc = count_no_in_quoted_arg(argv);
+			argv = process_quoted_arg(&argc, &argv);
+		}
+		else
+		{
+			j = 0;
+			while (argv[1][j])
+			{
+				if (ft_isdigit(argv[1][j++]) == 0)
+					handle_error(NULL, NULL);
+			}
+		}
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
