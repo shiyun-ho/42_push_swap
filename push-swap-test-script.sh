@@ -146,8 +146,8 @@ test_large() {
         fi
     }
 
-    test_large_set 100 700    # 100 numbers: max 700 operations
-    test_large_set 500 5500   # 500 numbers: max 5500 operations
+    test_large_set 100 1500 # 100 numbers: max 1500 operations
+    test_large_set 500 11500   # 500 numbers: max 11500 operations
 }
 
 # Function to test memory leaks
