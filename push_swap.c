@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/01 11:20:46 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:38:28 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	int		*duplicate_check_array;
 	t_list	*head;
 
+	ft_printf("Entered create_and_sort_linked_list()\n");
 	duplicate_check_array = NULL;
 	head = NULL;
+	// if it fails duplicate check
 	if (!create_linked_list(argc, argv, &duplicate_check_array, &head))
 	{
+		ft_printf("Entering check prior to creation of linked list\n");
+		// free(argv);
 		handle_error(duplicate_check_array, &head);
 		exit(EXIT_FAILURE);
 	}
@@ -65,10 +69,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (argc >= 2 && ft_strchr(argv[1], ' ') != NULL)
 	{
-		// ft_printf("argc after compiling prog: %i\n", argc);
 		argc = count_no_in_quoted_arg(argv);
-		// ft_printf("argc after counting prog: %i\n", argc);
 		argv = process_quoted_arg(&argc, &argv);
+		
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);

@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:52:39 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/01 11:22:32 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:33:43 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**process_quoted_arg(int *argc, char ***argv)
 	int		split_count;
 	int		i;
 
-	digit_check(*argc, argv);
+	// digit_check(*argc, argv);
 	args_array = handle_string_input((*argv)[1]);
 	split_count = count_no_in_array(args_array);
 	new_argv = (char **)malloc((split_count + 2) * sizeof(char *));
