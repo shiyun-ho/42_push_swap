@@ -44,7 +44,10 @@ int	validate_input(long num, char *arg, int *array, int index)
 	if (num == 0 && (arg[0] != '0' || arg[1] != '\0'))
 		return (0);
 	if (has_duplicate(array, index))
+	{
+
 		return (0);
+	}
 	return (1);
 }
 
@@ -70,7 +73,9 @@ int	create_linked_list(int argc, char *argv[], int **array, t_list **head)
 			handle_error(*array, head);
 		ft_lstadd_back(head, new_node);
 		if (!validate_input(num, argv[i], *array, i))
+		{
 			handle_error(*array, head);
+		}
 		i++;
 	}
 	return (1);

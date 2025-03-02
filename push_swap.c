@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/02 16:12:20 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 18:33:37 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	free(duplicate_check_array);
 }
 
-// validity check
 void	check_if_valid(char ***argv)
 {
 	int		digit_checker;
@@ -78,7 +77,7 @@ void	check_if_valid(char ***argv)
 			if ((*argv)[1][j] == '+' || (*argv)[1][j] == '-')
 				handle_error(NULL, NULL);
 		}
-		if (ft_isdigit((*argv)[1][j]) == 0)
+		if (ft_isdigit((*argv)[1][j]) == 0 && (*argv)[1][j] != ' ')
 			handle_error(NULL, NULL);
 		if (ft_isdigit((*argv)[1][j] == 1))
 			digit_checker++;
@@ -94,6 +93,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (argc == 2)
 	{
+		// This is where we check for space
 		if (ft_strchr(argv[1], ' ') != NULL)
 		{
 			check_if_valid(&argv);
@@ -112,5 +112,8 @@ int	main(int argc, char *argv[])
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
+	// Trying to see if we can free
+	free(argv);
+	
 	return (1);
 }

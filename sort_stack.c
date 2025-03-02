@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:58:47 by shiyun            #+#    #+#             */
-/*   Updated: 2025/02/15 17:45:07 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 18:40:00 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,14 @@ void	assign_ranks(t_list *stack, t_list *sorted_copy)
 	}
 }
 
+void	print_stack(t_list *stack) {
+    while (stack) {
+        ft_printf("%d ", stack->content); // Assuming `rank` is the value you want to print
+        stack = stack->next;
+    }
+    ft_printf("\n");
+}
+
 /**
  * @brief: Sorts stack from user input
  * @param: `stack_a` - Stack generated from user inputs
@@ -89,8 +97,16 @@ void	sort_stack(t_list **stack_a)
 
 	stack_b = NULL;
 	size = ft_lstsize(*stack_a);
+	// ft_printf("Stack A before sorting: \n");
+	// print_stack(*stack_a);
 	if (is_sorted(*stack_a))
+	{
+		ft_printf("Checking if it enters is_sorted()");
+		// Missing that needs to be freed
+		
+		ft_lstclear(stack_a, del_int);
 		return ;
+	}
 	if (size <= 3)
 		sort_three_elements(stack_a, size);
 	else if (size <= 5)
@@ -105,4 +121,6 @@ void	sort_stack(t_list **stack_a)
 		ft_lstclear(&copy, del_int);
 		radix_sort(stack_a, &stack_b, size);
 	}
+	// ft_printf("Stack A after sorting: \n");
+	// print_stack(*stack_a);
 }

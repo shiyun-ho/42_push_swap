@@ -43,7 +43,16 @@ int	count_no_in_quoted_arg(char *argv[])
 
 	args_array = handle_string_input(argv[1]);
 	split_count = count_no_in_array(args_array);
-	free(args_array);
+	// free(args_array); //this only frees the args_array
+	if (args_array != NULL)
+    {
+		ft_printf("Freeing args_array()\n");
+        for (int i = 0; args_array[i] != NULL; i++)
+        {
+            free(args_array[i]); // Free each string (element)
+        }
+        free(args_array); // Free the array itself
+    }
 	total_no = split_count;
 	if (argv[1] && argv[1][0] != '\0' && split_count == 0)
 		total_no = 1;
@@ -75,6 +84,11 @@ char	**process_quoted_arg(int *argc, char ***argv)
 	new_argv[split_count + 1] = NULL;
 	*argc = split_count + 1;
 	*argv = new_argv;
+	// free elements in the array
+	// for (i = 0; i < split_count; i++)
+    // {
+    //     free(args_array[i]); // Free each string
+    // }
 	free(args_array);
 	return (new_argv);
 }

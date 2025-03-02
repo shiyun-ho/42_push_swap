@@ -17,7 +17,6 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft
 
 PROGRAM = push_swap
-CLIENT = client
 
 SRC = push_swap.c process_quote_utils.c arg_check_utils.c stack_utils.c sort_stack.c swap_operations.c \
 	  rotate_operations.c reverse_rotate_operations.c push_operations.c \
@@ -26,6 +25,9 @@ SRC = push_swap.c process_quote_utils.c arg_check_utils.c stack_utils.c sort_sta
 OBJ = $(SRC:.c=.o)
 
 all: $(PROGRAM)
+
+debug: CFLAGS += -g
+debug: $(PROGRAM)
 
 $(PROGRAM): $(SRC) $(OBJ) $(LIBFT)
 	@echo ">>>Compiling sublibrary: $(LIBFT): "

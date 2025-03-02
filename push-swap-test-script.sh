@@ -156,6 +156,7 @@ test_leaks() {
 
     leak_test_cases=(
         '"1 2 3"'
+        '"1 3 2 4 5"'
         '"abc"'
         '"1 abc"'
         '"2147483648"'
