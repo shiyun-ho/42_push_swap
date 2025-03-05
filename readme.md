@@ -174,4 +174,9 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
     - Will need to make a copy of the stack for quick sort
     - Assign the new rank to the original stack_a 
     - Resolved by copying new stack, and assigning new ranks to stack_a by assigning ranks from new stack to old
+  
+  - Bug: Issue with checking through arguments for 100 elements
+    - Check why error msg is appearing: may have to do with function in sorting five elements
+    - Determined that error msg doesn't show because of sort function
+    - Error msg shows because it comes from parsing of str argument of all arguments
     

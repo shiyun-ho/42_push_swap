@@ -28,12 +28,18 @@ int	handle_error(int *array, t_list **node)
 int	has_duplicate(int *array, int size)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < (size - 1))
+	while (i < size - 1)
 	{
-		if (array[i] == array[i + 1])
-			return (1);
+		j = i + 1;
+		while (j < size)
+		{
+			if (array[i] == array[j])
+				return (1);
+			j++;
+		}
 		i++;
 	}
 	return (0);
@@ -91,15 +97,15 @@ void	check_valid_argument(char *arg)
 	j = 0;
 	while (arg[j])
 	{
-		if (ft_isdigit(arg[j]))
-			return ;
-		else if (j == 0)
+		if (j == 0)
 		{
 			if (arg[j] == '+' || arg[j] == '-')
-				return ;
+				j++;
 		}
-		else
+		if (!ft_isdigit(arg[j]))
 			handle_error(NULL, NULL);
 		j++;
 	}
+	if (j == 0 || (j == 1 && (arg[0] == '+' || arg[0] == '-')))
+		handle_error(NULL, NULL);
 }

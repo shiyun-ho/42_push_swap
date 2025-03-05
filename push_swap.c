@@ -27,7 +27,7 @@ void	free_split_args(char **args)
 		free(args[i]);
 		i++;
 	}
-	free(args[i]);
+	free(args);
 }
 
 static void	handle_arguments(int argc, char **argv)
@@ -59,60 +59,43 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	free(duplicate_check_array);
 }
 
-void	check_if_valid(char ***argv)
-{
-	int		digit_checker;
-	int		j;
 
-	j = 0;
-	digit_checker = 0;
-	if ((*argv)[1][0] == '\0')
-		handle_error(NULL, NULL);
-	if (((*argv)[1][j] == '+' || (*argv)[1][j] == '-'))
-		j++;
-	while ((*argv)[1][j])
+void	free_new_argv(char **argv)
+{
+	int	i;
+
+	i = 1;
+	if (!argv)
+		return ;
+	while (argv[i])
 	{
-		if (digit_checker > 0)
-		{
-			if ((*argv)[1][j] == '+' || (*argv)[1][j] == '-')
-				handle_error(NULL, NULL);
-		}
-		if (ft_isdigit((*argv)[1][j]) == 0 && (*argv)[1][j] != ' ')
-			handle_error(NULL, NULL);
-		if (ft_isdigit((*argv)[1][j] == 1))
-			digit_checker++;
-		j++;
+		free(argv[i]);
+		i++;
 	}
+	free(argv);
 }
 
 int	main(int argc, char *argv[])
 {
-	int		j;
+	char	**new_argv;
 
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
 	{
-		// This is where we check for space
+
 		if (ft_strchr(argv[1], ' ') != NULL)
 		{
-			check_if_valid(&argv);
 			argc = count_no_in_quoted_arg(argv);
-			argv = process_quoted_arg(&argc, &argv);
-		}
-		else
-		{
-			j = 0;
-			while (argv[1][j])
-			{
-				if (ft_isdigit(argv[1][j++]) == 0)
-					handle_error(NULL, NULL);
-			}
+			new_argv = process_quoted_arg(&argc, &argv);
+			handle_arguments(argc, new_argv);
+			create_and_sort_linked_list(argc, new_argv);
+			free_new_argv(new_argv);
+			return (0);
 		}
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
-	// Trying to see if we can free
 	free(argv);
 	
 	return (1);
