@@ -173,5 +173,6 @@ int	main(int argc, char *argv[])
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
+	free(argv);
 	return (1);
 }

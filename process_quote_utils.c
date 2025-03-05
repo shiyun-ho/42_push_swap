@@ -96,8 +96,13 @@ char	**process_quoted_arg(int *argc, char ***argv)
 	*argv = new_argv;
 
 	free_split(args_array);
-	// free(args_array);
-	return (new_argv);
+	/***
+	 * THIS IS A RUNNING GOBLIN TELLING ME IN FUTURE TO FREE THE NEW_ARGV SOMEHOW SOMEWHAT???
+	 * 
+	 */
+	free_split(new_argv); //TODO: I need to free this but later not NOW
+	// return (new_argv);
+	return (*argv);
 }
 
 // char	**process_quoted_arg(int *argc, char ***argv)
