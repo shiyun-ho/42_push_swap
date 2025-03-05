@@ -35,17 +35,19 @@ int	count_no_in_array(char **array)
 	return (i);
 }
 
-void free_split(char **split)
+void	free_split(char **split)
 {
-    int i = 0;
-    if (!split)
-        return;
-    while (split[i])  // Free each string inside the array
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);  // Free the outer array
+	int		i;
+
+	i = 0;
+	if (!split)
+		return ;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }
 
 int	count_no_in_quoted_arg(char *argv[])
@@ -57,7 +59,6 @@ int	count_no_in_quoted_arg(char *argv[])
 	args_array = handle_string_input(argv[1]);
 	split_count = count_no_in_array(args_array);
 	free_split(args_array);
-	// free(args_array);
 	total_no = split_count;
 	if (argv[1] && argv[1][0] != '\0' && split_count == 0)
 		total_no = 1;
@@ -91,40 +92,8 @@ char	**process_quoted_arg(int *argc, char ***argv)
 		i++;
 	}
 	new_argv[split_count + 1] = NULL;
-
 	*argc = split_count + 1;
 	*argv = new_argv;
-
-	free_split(args_array);
-	/***
-	 * THIS IS A RUNNING GOBLIN TELLING ME IN FUTURE TO FREE THE NEW_ARGV SOMEHOW SOMEWHAT???
-	 * 
-	 */
-	free_split(new_argv); //TODO: I need to free this but later not NOW
-	// return (new_argv);
-	return (*argv);
+	free_split_args(args_array);
+	return (new_argv);
 }
-
-// char	**process_quoted_arg(int *argc, char ***argv)
-// {
-// 	char	**args_array;
-// 	char	**new_argv;
-// 	int		split_count;
-// 	int		i;
-
-// 	args_array = handle_string_input((*argv)[1]);
-// 	split_count = count_no_in_array(args_array);
-// 	new_argv = (char **)malloc((split_count + 2) * sizeof(char *));
-// 	new_argv[0] = (*argv)[0];
-// 	i = 0;
-// 	while (i < split_count)
-// 	{
-// 		new_argv[i + 1] = args_array[i];
-// 		i++;
-// 	}
-// 	new_argv[split_count + 1] = NULL;
-// 	*argc = split_count + 1;
-// 	*argv = new_argv;
-// 	free(args_array);
-// 	return (new_argv);
-// }
