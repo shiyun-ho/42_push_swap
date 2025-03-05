@@ -27,7 +27,8 @@ void	free_split_args(char **args)
 		free(args[i]);
 		i++;
 	}
-	free(args[i]);
+	free(args);
+	// free(args[i]);
 }
 
 static void	handle_arguments(int argc, char **argv)
@@ -60,54 +61,114 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 }
 
 // validity check
-void	check_if_valid(char ***argv)
-{
-	int		digit_checker;
-	int		j;
 
-	j = 0;
-	digit_checker = 0;
-	if ((*argv)[1][0] == '\0')
-		handle_error(NULL, NULL);
-	if (((*argv)[1][j] == '+' || (*argv)[1][j] == '-'))
-		j++;
-	while ((*argv)[1][j])
-	{
-		if (digit_checker > 0)
-		{
-			if ((*argv)[1][j] == '+' || (*argv)[1][j] == '-')
-				handle_error(NULL, NULL);
-		}
-		if (ft_isdigit((*argv)[1][j]) == 0)
-			handle_error(NULL, NULL);
-		if (ft_isdigit((*argv)[1][j] == 1))
-			digit_checker++;
-		j++;
-	}
-}
+
+// void	check_if_valid(char ***argv)
+// {
+// 	int		digit_checker;
+// 	int		j;
+// 	int		has_space = 0;
+
+// 	j = 0;
+// 	digit_checker = 0;
+// 	if ((*argv)[1] == NULL || (*argv)[1][0] == '\0')
+// 		handle_error(NULL, NULL);
+// 	if (((*argv)[1][j] == '+' || (*argv)[1][j] == '-'))
+// 		j++;
+// 	while ((*argv)[1][j])
+// 	{
+// 		if ((*argv)[1][j] == ' ')  // Detect spaces
+// 			has_space = 1;
+// 		else if (ft_isdigit((*argv)[1][j]) == 0)  // Reject non-numeric input
+// 			handle_error(NULL, NULL);
+// 		else
+// 			digit_checker++;
+
+// 		j++;
+// 	}
+// 	if (digit_checker == 0)
+// 		handle_error(NULL, NULL);
+
+// 	// If spaces exist, defer full validation until after splitting
+// 	if (has_space)
+// 		return;
+// }
+
+// void	check_if_valid(char ***argv)
+// {
+// 	int		digit_checker;
+// 	int		j;
+
+// 	j = 0;
+// 	digit_checker = 0;
+// 	if ((*argv)[1] == NULL || (*argv)[1][0] == '\0')
+// 		handle_error(NULL, NULL);
+// 	if (((*argv)[1][j] == '+' || (*argv)[1][j] == '-'))
+// 		j++;
+// 	while ((*argv)[1][j])
+// 	{
+// 		if (ft_isdigit((*argv)[1][j]) == 0)
+// 			handle_error(NULL, NULL); // Reject non-numeric input
+
+// 		digit_checker++;
+// 		j++;
+// 	}
+// 	if (digit_checker == 0)
+// 		handle_error(NULL, NULL);
+// 	// while ((*argv)[1][j])
+// 	// {
+// 	// 	if (digit_checker > 0)
+// 	// 	{
+// 	// 		if ((*argv)[1][j] == '+' || (*argv)[1][j] == '-')
+// 	// 			handle_error(NULL, NULL);
+// 	// 	}
+// 	// 	if (ft_isdigit((*argv)[1][j]) == 0)
+// 	// 		handle_error(NULL, NULL);
+// 	// 	if (ft_isdigit((*argv)[1][j] == 1))
+// 	// 		digit_checker++;
+// 	// 	j++;
+// 	// }
+// }
+
+// int	main(int argc, char *argv[])
+// {
+// 	// int		j;
+
+// 	if (argc == 1)
+// 		return (0);
+// 	if (argc == 2)
+// 	{
+// 		if (ft_strchr(argv[1], ' ') != NULL)
+// 		{
+// 			argc = count_no_in_quoted_arg(argv);
+// 			argv = process_quoted_arg(&argc, &argv);
+// 			// check_if_valid(&argv);
+// 		}
+// 		// else
+// 		// {
+// 		// 	j = 0;
+// 		// 	while (argv[1][j])
+// 		// 	{
+// 		// 		if (ft_isdigit(argv[1][j++]) == 0)
+// 		// 			handle_error(NULL, NULL);
+// 		// 	}
+// 		// }
+// 	}
+// 	handle_arguments(argc, argv);
+// 	create_and_sort_linked_list(argc, argv);
+// 	return (1);
+// }
 
 int	main(int argc, char *argv[])
 {
-	int		j;
-
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
 	{
 		if (ft_strchr(argv[1], ' ') != NULL)
 		{
-			check_if_valid(&argv);
 			argc = count_no_in_quoted_arg(argv);
 			argv = process_quoted_arg(&argc, &argv);
-		}
-		else
-		{
-			j = 0;
-			while (argv[1][j])
-			{
-				if (ft_isdigit(argv[1][j++]) == 0)
-					handle_error(NULL, NULL);
-			}
 		}
 	}
 	handle_arguments(argc, argv);

@@ -27,6 +27,9 @@ OBJ = $(SRC:.c=.o)
 
 all: $(PROGRAM)
 
+debug: CFLAGS += -g
+debug: $(PROGRAM)
+
 $(PROGRAM): $(SRC) $(OBJ) $(LIBFT)
 	@echo ">>>Compiling sublibrary: $(LIBFT): "
 	$(MAKE) -C $(LIBFT)

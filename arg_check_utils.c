@@ -25,15 +25,35 @@ int	handle_error(int *array, t_list **node)
 	exit(EXIT_FAILURE);
 }
 
+// int	has_duplicate(int *array, int size)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < (size - 1))
+// 	{
+// 		if (array[i] == array[i + 1])
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
 int	has_duplicate(int *array, int size)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < (size - 1))
+	while (i < size - 1)
 	{
-		if (array[i] == array[i + 1])
-			return (1);
+		j = i + 1;
+		while (j < size)
+		{
+			if (array[i] == array[j]) // Compare all pairs
+				return (1);
+			j++;
+		}
 		i++;
 	}
 	return (0);
@@ -69,6 +89,7 @@ int	create_linked_list(int argc, char *argv[], int **array, t_list **head)
 		if (!new_node)
 			handle_error(*array, head);
 		ft_lstadd_back(head, new_node);
+		// ft_printf("Starting validate input ...\n");
 		if (!validate_input(num, argv[i], *array, i))
 			handle_error(*array, head);
 		i++;
