@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/02 16:12:20 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/02 18:33:37 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	free(duplicate_check_array);
 }
 
+
 void	free_new_argv(char **argv)
 {
 	int	i;
@@ -82,6 +83,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (argc == 2)
 	{
+
 		if (ft_strchr(argv[1], ' ') != NULL)
 		{
 			argc = count_no_in_quoted_arg(argv);
@@ -94,5 +96,7 @@ int	main(int argc, char *argv[])
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
+	free(argv);
+	
 	return (1);
 }
