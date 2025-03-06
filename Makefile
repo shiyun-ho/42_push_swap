@@ -26,7 +26,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(PROGRAM)
 
-debug: CFLAGS += -g
+debug: CFLAGS += -g 
 debug: $(PROGRAM)
 
 $(PROGRAM): $(SRC) $(OBJ) $(LIBFT)
@@ -39,7 +39,7 @@ $(PROGRAM): $(SRC) $(OBJ) $(LIBFT)
 
 %.o : %.c
 	@echo ">>> Compiling .c files to .o files"
-	$(CC) $(CFLAGS) -c -o $@ $^
+	$(CC) $(CFLAGS) -c -o $@ $^ 
 
 norminette:
 	@echo ">>> Checking norminette for all files"
