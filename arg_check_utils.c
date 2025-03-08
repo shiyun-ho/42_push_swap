@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:28:37 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/08 11:59:16 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:23:04 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int	handle_error(int *array, t_list **node)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	if (array)
 		free(array);
 	if (node)
