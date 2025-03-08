@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/08 12:00:42 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:02:45 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,21 @@ void	free_new_argv(char **argv)
 	free(argv);
 }
 
+void	check_no_space_arg(char *str)
+{
+	int		i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			handle_error(NULL, NULL);
+		i++;
+	}
+	if (ft_atol(str))
+		exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		new_argc;
@@ -84,7 +99,19 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		if (ft_strchr(argv[1], ' ') == NULL)
+		{
+			check_no_space_arg(argv[1]);	
+			// int i = 0;
+			// while (argv[1][i])
+			// {
+			// 	if (!ft_isdigit(argv[1][i]))
+			// 		handle_error(NULL, NULL);
+			// 	i++;
+			// }
+			// if (ft_atol(argv[1]))
+			// 	exit(EXIT_FAILURE);
 			handle_error(NULL, NULL);
+		}
 		else
 		{
 			if (!validate_input_string(argv[1]))
