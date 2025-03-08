@@ -180,3 +180,7 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
     - Determined that error msg doesn't show because of sort function
     - Error msg shows because it comes from parsing of str argument of all arguments
     
+- valgrind --leak-check=full --show-leak-kinds=all ./push_swap "12 3254 234t 34"
+
+
+    
