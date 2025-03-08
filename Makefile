@@ -6,7 +6,7 @@
 #    By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 20:03:42 by hshi-yun          #+#    #+#              #
-#    Updated: 2025/02/12 21:54:36 by hshi-yun         ###   ########.fr        #
+#    Updated: 2025/03/08 11:43:11 by hshi-yun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ PROGRAM = push_swap
 
 SRC = push_swap.c process_quote_utils.c arg_check_utils.c stack_utils.c sort_stack.c swap_operations.c \
 	  rotate_operations.c reverse_rotate_operations.c push_operations.c \
-	  quick_sort.c radix_sort.c sort_utils.c \
+	  quick_sort.c radix_sort.c sort_utils.c validate_input_arg.c \
 
 OBJ = $(SRC:.c=.o)
 

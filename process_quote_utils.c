@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:52:39 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/02 16:02:36 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:00:08 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,6 @@ int	count_no_in_quoted_arg(char *argv[])
 	return (total_no);
 }
 
-/**
-	***argv = pointer to group of str 
-	char **argv = group of str
-	**argv = *argv[i]
-*/
 char	**process_quoted_arg(int *argc, char ***argv)
 {
 	char	**args_array;

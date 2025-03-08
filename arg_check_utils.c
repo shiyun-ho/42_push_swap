@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:28:37 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/01 11:22:47 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 11:59:16 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ int	validate_input(long num, char *arg, int *array, int index)
 	if (num == 0 && (arg[0] != '0' || arg[1] != '\0'))
 		return (0);
 	if (has_duplicate(array, index))
-	{
-
 		return (0);
-	}
 	return (1);
 }
 
@@ -79,9 +76,7 @@ int	create_linked_list(int argc, char *argv[], int **array, t_list **head)
 			handle_error(*array, head);
 		ft_lstadd_back(head, new_node);
 		if (!validate_input(num, argv[i], *array, i))
-		{
 			handle_error(*array, head);
-		}
 		i++;
 	}
 	return (1);
