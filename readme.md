@@ -179,4 +179,27 @@ Push Swap is a project designed to test the ability to sort data efficiently usi
     - Check why error msg is appearing: may have to do with function in sorting five elements
     - Determined that error msg doesn't show because of sort function
     - Error msg shows because it comes from parsing of str argument of all arguments
+  
+  - Bug: Issue with `valgrind ./push_swap "1 2 34t 7"
+  ```
+    ==3543== Memcheck, a memory error detector
+    ==3543== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+    ==3543== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+    ==3543== Command: ./push_swap 1\ 2\ 34t\ 7
+    ==3543== 
+    Error
+    ==3543== 
+    ==3543== HEAP SUMMARY:
+    ==3543==     in use at exit: 58 bytes in 5 blocks
+    ==3543==   total heap usage: 15 allocs, 10 frees, 158 bytes allocated
+    ==3543== 
+    ==3543== LEAK SUMMARY:
+    ==3543==    definitely lost: 0 bytes in 0 blocks
+    ==3543==    indirectly lost: 0 bytes in 0 blocks
+    ==3543==      possibly lost: 0 bytes in 0 blocks
+    ==3543==    still reachable: 58 bytes in 5 blocks
+    ==3543==         suppressed: 0 bytes in 0 blocks
+    ==3543== Rerun with --leak-check=full to see details of leaked memory
+  ```
+	- Preloading export LD_PRELOAD=$(gcc -print-file-name=libasan.so) results in DEADLYSIGNAL
     

@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/02 18:33:37 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:00:42 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	create_and_sort_linked_list(int argc, char **argv)
 	free(duplicate_check_array);
 }
 
-
 void	free_new_argv(char **argv)
 {
 	int	i;
@@ -77,26 +76,28 @@ void	free_new_argv(char **argv)
 
 int	main(int argc, char *argv[])
 {
+	int		new_argc;
 	char	**new_argv;
 
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
 	{
-
-		if (ft_strchr(argv[1], ' ') != NULL)
+		if (ft_strchr(argv[1], ' ') == NULL)
+			handle_error(NULL, NULL);
+		else
 		{
-			argc = count_no_in_quoted_arg(argv);
-			new_argv = process_quoted_arg(&argc, &argv);
-			handle_arguments(argc, new_argv);
-			create_and_sort_linked_list(argc, new_argv);
+			if (!validate_input_string(argv[1]))
+				handle_error(NULL, NULL);
+			new_argc = count_no_in_quoted_arg(argv);
+			new_argv = process_quoted_arg(&new_argc, &argv);
+			handle_arguments(new_argc, new_argv);
+			create_and_sort_linked_list(new_argc, new_argv);
 			free_new_argv(new_argv);
-			return (0);
+			return (1);
 		}
 	}
 	handle_arguments(argc, argv);
 	create_and_sort_linked_list(argc, argv);
-	free(argv);
-	
 	return (1);
 }
