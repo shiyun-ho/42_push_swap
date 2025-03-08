@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:19:18 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/08 12:00:42 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:05:35 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		if (ft_strchr(argv[1], ' ') == NULL)
-			handle_error(NULL, NULL);
+			handle_no_space_arg(argv[1]);
 		else
 		{
 			if (!validate_input_string(argv[1]))

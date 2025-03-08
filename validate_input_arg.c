@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:16:19 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/08 12:03:11 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:09:00 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 #include "push_swap.h"
 #include <limits.h>
 #include <stdlib.h>
+
+void	handle_no_space_arg(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			handle_error(NULL, NULL);
+		i++;
+	}
+	if (ft_atol(str))
+		exit(EXIT_FAILURE);
+	handle_error(NULL, NULL);
+}
 
 int	is_valid_number(const char *str)
 {
