@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:59:27 by shiyun            #+#    #+#             */
-/*   Updated: 2025/03/08 11:43:48 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:06:23 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_list	*reverse_stack(t_list *head);
 int		bits_for_highest_rank(int rank);
 void	radix_sort(t_list **stack_a, t_list **stack_b, int size);
 
+// Random utils
+void	handle_no_space_arg(char *str);
 void	free_split(char **split);
 void	free_split_args(char **args);
 int		validate_input_string(const char *input);
