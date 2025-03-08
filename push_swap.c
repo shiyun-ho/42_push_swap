@@ -86,6 +86,11 @@ int	main(int argc, char *argv[])
 
 		if (ft_strchr(argv[1], ' ') != NULL)
 		{
+			if (!validate_quoted_input(argv[1]))
+			{
+				ft_putendl_fd("Error", 2);
+				exit(1);
+			}
 			argc = count_no_in_quoted_arg(argv);
 			new_argv = process_quoted_arg(&argc, &argv);
 			handle_arguments(argc, new_argv);
