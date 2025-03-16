@@ -6,7 +6,7 @@
 /*   By: hshi-yun <hshi-yun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:16:19 by hshi-yun          #+#    #+#             */
-/*   Updated: 2025/03/08 17:09:00 by hshi-yun         ###   ########.fr       */
+/*   Updated: 2025/03/10 21:20:11 by hshi-yun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 void	handle_no_space_arg(char *str)
 {
 	int		i;
+	long	num;
 
 	i = 0;
 	while (str[i])
@@ -26,8 +27,13 @@ void	handle_no_space_arg(char *str)
 			handle_error(NULL, NULL);
 		i++;
 	}
-	if (ft_atol(str))
+	num = ft_atol(str);
+	if (num)
+	{
+		if (num < INT_MIN || num > INT_MAX)
+			handle_error(NULL, NULL);
 		exit(EXIT_FAILURE);
+	}
 	handle_error(NULL, NULL);
 }
 
